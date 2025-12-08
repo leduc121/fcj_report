@@ -1,58 +1,37 @@
 ---
 title: "Worklog Tuần 12"
-date: "2025-09-09"
+date: "2025-11-25"
 weight: 12
 chapter: false
-pre: " <b> 1.12 </b> "
+pre: " <b> 1.12. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-### Mục tiêu tuần 12:
-
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
-
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
-### Kết quả đạt được tuần 12:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+### Mục tiêu Tuần 12: 🎯
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Hiểu rõ và ứng dụng dịch vụ **Amazon CloudFront** để phân phối nội dung (CDN).
+* Nắm vững quy trình **Đóng gói ứng dụng (Containerization)** với **Docker** và triển khai **Docker Image**.
+* **Triển khai thành công trang web chính thức** lên môi trường Production sử dụng CloudFront.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+---
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+### Các công việc thực hiện trong tuần:
+| Ngày | Nhiệm vụ | Ngày Bắt đầu | Ngày Hoàn thành | Tài liệu Tham khảo |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | -------------------------------------------------------------------------------------- |
+| 1-2 | - **Nghiên cứu & Học tập về Amazon CloudFront** <br>&emsp; + Khái niệm, cơ chế hoạt động, và lợi ích của CDN. <br>&emsp; + **CloudFront Distribution** (Web/RTMP), **Origin**, **Cache Behavior**. <br>&emsp; + Cấu hình **Tên miền** và **Chứng chỉ SSL** cho CloudFront. | 25/11/2025 | 26/11/2025 | <https://000094.awsstudygroup.com/> |
+| 3-4 | - **Chuẩn bị và Triển khai Docker Image** <br>&emsp; + Học về **Dockerfile** và quy trình xây dựng **Docker Image**. <br>&emsp; + Thực hành tạo Image cho ứng dụng web. <br>&emsp; + **Đẩy Image** lên **Amazon ECR** hoặc **Docker Hub** (chuẩn bị cho triển khai). | 27/11/2025 | 28/11/2025 | <https://000015.awsstudygroup.com/6-docker-image/> |
+| 5-7 | - **Triển khai Trang web Chính thức qua CloudFront** <br>&emsp; + Cấu hình **Origin** (ví dụ: S3 Bucket, EC2/ALB) cho CloudFront Distribution. <br>&emsp; + Thực hiện **Triển khai hoàn chỉnh (Full Deployment)** của trang web chính thức. <br>&emsp; + Kiểm tra và xác minh hoạt động của trang web tại **d3lj47ilp0fgxy.cloudfront.net**. | 29/11/2025 | 01/12/2025 | <https://d3lj47ilp0fgxy.cloudfront.net> (Mục tiêu triển khai) |
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+---
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+### Thành tựu Tuần 12: ✅
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+* Đã **nghiên cứu chuyên sâu** và **hiểu rõ** về **Amazon CloudFront** và vai trò của nó như một **Mạng lưới Phân phối Nội dung (CDN)**.
+* Nắm được các thành phần cốt lõi của CloudFront Distribution như **Origin** và **Cache Behavior**.
+* Thành công trong việc học và thực hành quy trình **Đóng gói ứng dụng** bằng **Docker**.
+* Đã **xây dựng thành công Docker Image** cho ứng dụng web theo tài liệu tham khảo.
+* **Hoàn thành việc triển khai (Deployment)** trang web chính thức lên môi trường Production, có thể truy cập qua: **d3lj47ilp0fgxy.cloudfront.net**.
+* Tích lũy kinh nghiệm trong việc phối hợp giữa các dịch vụ **AWS** (ví dụ: S3/EC2/Load Balancer) và **CloudFront** để tối ưu hóa hiệu suất và bảo mật.
 
-
+---
