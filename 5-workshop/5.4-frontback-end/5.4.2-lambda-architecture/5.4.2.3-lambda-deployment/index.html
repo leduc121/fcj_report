@@ -1,0 +1,321 @@
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.134.3"><meta name=description content><meta name=author content="thienlh@thienlu.com"><link rel=icon href=../../../../images/favicon.png type=image/png><title>Lamda-Deployment :: Internship Report</title>
+<link href=../../../../css/nucleus.css?1765248291 rel=stylesheet><link href=../../../../css/fontawesome-all.min.css?1765248291 rel=stylesheet><link href=../../../../css/hybrid.css?1765248291 rel=stylesheet><link href=../../../../css/featherlight.min.css?1765248291 rel=stylesheet><link href=../../../../css/perfect-scrollbar.min.css?1765248291 rel=stylesheet><link href=../../../../css/auto-complete.css?1765248291 rel=stylesheet><link href=../../../../css/atom-one-dark-reasonable.css?1765248291 rel=stylesheet><link href=../../../../css/theme.css?1765248291 rel=stylesheet><link href=../../../../css/hugo-theme.css?1765248291 rel=stylesheet><link href=../../../../css/theme-workshop.css?1765248291 rel=stylesheet><script src=../../../../js/jquery-3.3.1.min.js?1765248291></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=../../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/><nav id=sidebar class=showVisitedLinks><div id=header-wrapper><div id=header><a id=logo href=../../../../><svg id="Layer_1" data-name="Layer 1" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff}.cls-2{fill:#f90;fill-rule:evenodd}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09 10.85a4.7 4.7.0 00.19 1.48 7.73 7.73.0 00.54 1.19.77.77.0 01.12.38.64.64.0 01-.32.49l-1 .7a.83.83.0 01-.44.15.69.69.0 01-.49-.23 3.8 3.8.0 01-.6-.77q-.25-.42-.51-1a6.14 6.14.0 01-4.89 2.3 4.54 4.54.0 01-3.32-1.19 4.27 4.27.0 01-1.22-3.2 4.28 4.28.0 011.46-3.4A6.06 6.06.0 017.69 6.46a12.47 12.47.0 011.76.13q.92.13 1.91.36V5.73a3.65 3.65.0 00-.79-2.66A3.81 3.81.0 007.86 2.3a7.71 7.71.0 00-1.79.22 12.78 12.78.0 00-1.79.57 4.55 4.55.0 01-.58.22h-.26q-.35.0-.35-.52V2a1.09 1.09.0 01.12-.58 1.2 1.2.0 01.47-.35A10.88 10.88.0 015.77.32 10.19 10.19.0 018.36.0a6 6 0 014.35 1.35 5.49 5.49.0 011.38 4.09zM7.34 13.38a5.36 5.36.0 001.72-.31A3.63 3.63.0 0010.63 12 2.62 2.62.0 0011.19 11a5.63 5.63.0 00.16-1.44v-.7a14.35 14.35.0 00-1.53-.28 12.37 12.37.0 00-1.56-.1 3.84 3.84.0 00-2.47.67A2.34 2.34.0 005 11a2.35 2.35.0 00.61 1.76A2.4 2.4.0 007.34 13.38zm13.35 1.8a1 1 0 01-.64-.16 1.3 1.3.0 01-.35-.65L15.81 1.51a3 3 0 01-.15-.67.36.36.0 01.41-.41H17.7a1 1 0 01.65.16 1.4 1.4.0 01.33.65l2.79 11 2.59-11A1.17 1.17.0 0124.39.6a1.1 1.1.0 01.67-.16H26.4a1.1 1.1.0 01.67.16 1.17 1.17.0 01.32.65L30 12.39 32.88 1.25A1.39 1.39.0 0133.22.6a1 1 0 01.65-.16h1.54a.36.36.0 01.41.41 1.36 1.36.0 010 .26 3.64 3.64.0 01-.12.41l-4 12.86a1.3 1.3.0 01-.35.65 1 1 0 01-.64.16H29.25a1 1 0 01-.67-.17 1.26 1.26.0 01-.32-.67L25.67 3.64l-2.56 10.7a1.26 1.26.0 01-.32.67 1 1 0 01-.67.17zm21.36.44a11.28 11.28.0 01-2.56-.29 7.44 7.44.0 01-1.92-.67 1 1 0 01-.61-.93v-.84q0-.52.38-.52a.9.9.0 01.31.06l.42.17a8.77 8.77.0 001.83.58 9.78 9.78.0 002 .2 4.48 4.48.0 002.43-.55 1.76 1.76.0 00.86-1.57 1.61 1.61.0 00-.45-1.16A4.29 4.29.0 0043 9.22l-2.41-.76A5.15 5.15.0 0138 6.78a3.94 3.94.0 01-.83-2.41 3.7 3.7.0 01.45-1.85 4.47 4.47.0 011.19-1.37 5.27 5.27.0 011.7-.86A7.4 7.4.0 0142.6.0a8.87 8.87.0 011.12.07q.57.07 1.08.19t.95.26a4.27 4.27.0 01.7.29 1.59 1.59.0 01.49.41.94.94.0 01.15.55v.79q0 .52-.38.52a1.76 1.76.0 01-.64-.2 7.74 7.74.0 00-3.2-.64 4.37 4.37.0 00-2.21.47 1.6 1.6.0 00-.79 1.48 1.58 1.58.0 00.49 1.18 4.94 4.94.0 001.83.92L44.55 7a5.08 5.08.0 012.57 1.6A3.76 3.76.0 0147.9 11a4.21 4.21.0 01-.44 1.93 4.4 4.4.0 01-1.21 1.47 5.43 5.43.0 01-1.85.93A8.25 8.25.0 0142.05 15.62z"/><path class="cls-2" d="M45.19 23.81C39.72 27.85 31.78 30 25 30A36.64 36.64.0 01.22 20.57c-.51-.46-.06-1.09.56-.74A49.78 49.78.0 0025.53 26.4 49.23 49.23.0 0044.4 22.53C45.32 22.14 46.1 23.14 45.19 23.81z"/><path class="cls-2" d="M47.47 21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74 3.13-2.2 8.27-1.57 8.86-.83s-.16 5.89-3.09 8.35c-.45.38-.88.18-.68-.32C46.69 25.8 48.17 22.11 47.47 21.21z"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=../../../../js/lunr.min.js?1765248291></script><script type=text/javascript src=../../../../js/auto-complete.js?1765248291></script><script type=text/javascript>var baseurl="https://github.com/leduc121/fcj_report/"</script><script type=text/javascript src=../../../../js/search.js?1765248291></script></div><div class=highlightable><ul class=topics><li data-nav-id=/1-worklog/ title=Worklog class=dd-item><a href=../../../../1-worklog/><b>1. </b>Worklog
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/1-worklog/1.1-week1/ title="Week 1 Worklog" class=dd-item><a href=../../../../1-worklog/1.1-week1/><b>1.1. </b>Week 1 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.2-week2/ title="Week 2 Worklog" class=dd-item><a href=../../../../1-worklog/1.2-week2/><b>1.2. </b>Week 2 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.3-week3/ title="Week 3 Worklog" class=dd-item><a href=../../../../1-worklog/1.3-week3/><b>1.3. </b>Week 3 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.4-week4/ title="Week 4 Worklog" class=dd-item><a href=../../../../1-worklog/1.4-week4/><b>1.4. </b>Week 4 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.5-week5/ title="Week 5 Worklog" class=dd-item><a href=../../../../1-worklog/1.5-week5/><b>1.5. </b>Week 5 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.6-week6/ title="Week 6 Worklog" class=dd-item><a href=../../../../1-worklog/1.6-week6/><b>1.6. </b>Week 6 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.7-week7/ title="Week 7 Worklog" class=dd-item><a href=../../../../1-worklog/1.7-week7/><b>1.7. </b>Week 7 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.8-week8/ title="Week 8 Worklog" class=dd-item><a href=../../../../1-worklog/1.8-week8/><b>1.8. </b>Week 8 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.9-week9/ title="Week 9 Worklog" class=dd-item><a href=../../../../1-worklog/1.9-week9/><b>1.9. </b>Week 9 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.10-week10/ title="Week 10 Worklog" class=dd-item><a href=../../../../1-worklog/1.10-week10/><b>1.10. </b>Week 10 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.11-week11/ title="Week 11 Worklog" class=dd-item><a href=../../../../1-worklog/1.11-week11/><b>1.11. </b>Week 11 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.12-week12/ title="Week 12 Worklog" class=dd-item><a href=../../../../1-worklog/1.12-week12/><b>1.12. </b>Week 12 Worklog
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/2-proposal/ title=Proposal class=dd-item><a href=../../../../2-proposal/><b>2. </b>Proposal
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/3-blogstranslated/ title="Translated Blogs" class=dd-item><a href=../../../../3-blogstranslated/><b>3. </b>Translated Blogs
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/3-blogstranslated/3.1-blog1/ title="Blog 1" class=dd-item><a href=../../../../3-blogstranslated/3.1-blog1/><b>3.1. </b>Blog 1
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/3-blogstranslated/3.2-blog2/ title="Blog 2" class=dd-item><a href=../../../../3-blogstranslated/3.2-blog2/><b>3.2. </b>Blog 2
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/3-blogstranslated/3.3-blog3/ title="Blog 3" class=dd-item><a href=../../../../3-blogstranslated/3.3-blog3/><b>3.3. </b>Blog 3
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/4-eventparticipated/ title="Events Participated" class=dd-item><a href=../../../../4-eventparticipated/><b>4. </b>Events Participated
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/4-eventparticipated/4.1-event1/ title="AWS CLOUD DAY" class=dd-item><a href=../../../../4-eventparticipated/4.1-event1/><b>4.1. </b>AWS CLOUD DAY
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/4-eventparticipated/4.2-event2/ title="Cloud Mastery 1" class=dd-item><a href=../../../../4-eventparticipated/4.2-event2/><b>4.2. </b>Cloud Mastery 1
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/4-eventparticipated/4.3-event3/ title="AWS Cloud Mastery Series #2" class=dd-item><a href=../../../../4-eventparticipated/4.3-event3/><b>4.3. </b>AWS Cloud Mastery Series #2
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/4-eventparticipated/4.4-event4/ title="AWS Cloud Mastery Series #1" class=dd-item><a href=../../../../4-eventparticipated/4.4-event4/><b>4.4. </b>AWS Cloud Mastery Series #1
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/ title=Workshop class="dd-item
+parent"><a href=../../../../5-workshop/><b>5. </b>Workshop
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.1-workshop-overview/ title=Introduction class=dd-item><a href=../../../../5-workshop/5.1-workshop-overview/><b>5.1. </b>Introduction
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.2-data-preparation/ title="Data Preparation" class=dd-item><a href=../../../../5-workshop/5.2-data-preparation/><b>5.2. </b>Data Preparation
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.3-ml-model/ title="Machine Learning Model" class=dd-item><a href=../../../../5-workshop/5.3-ml-model/><b>5.3. </b>Machine Learning Model
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-frontback-end/5.4.1-frontend-architecture/ title="Frontend Architecture" class=dd-item><a href=../../../../5-workshop/5.4-frontback-end/5.4.1-frontend-architecture/><b>5.4.1 </b>Frontend Architecture
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/ title="Lambda Architecture" class="dd-item
+parent"><a href=../../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/><b>5.4.2 </b>Lambda Architecture
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.1-ai-model-integration/ title=AI-Model-Integration class=dd-item><a href=../../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.1-ai-model-integration/><b>5.4.2.1 </b>AI-Model-Integration
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.2-fix-unicode-error-solution/ title=Fix-Unicode-Error class=dd-item><a href=../../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.2-fix-unicode-error-solution/><b>5.4.2.2 </b>Fix-Unicode-Error
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/ title=Lamda-Deployment class="dd-item
+active"><a href=../../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/><b>5.4.2.3 </b>Lamda-Deployment
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/5.5-platform-api/ title="Platform API" class=dd-item><a href=../../../../5-workshop/5.5-platform-api/><b>5.5. </b>Platform API
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/6-self-evaluation/ title=Self-Assessment class=dd-item><a href=../../../../6-self-evaluation/><b>6. </b>Self-Assessment
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/7-feedback/ title="Sharing and Feedback" class=dd-item><a href=../../../../7-feedback/><b>7. </b>Sharing and Feedback
+<i class="fas fa-check read-icon"></i></a></li></ul><section id=shortcuts><h3>More</h3><ul><li><a class=padding href=https://www.facebook.com/groups/awsstudygroupfcj/><i class='fab fa-facebook'></i> AWS Study Group</a></li></ul></section><section id=prefooter><hr><ul><li><a class=padding><i class="fas fa-language fa-fw"></i><div class=select-style><select id=select-language onchange="location=this.value"><option id=en value=https://github.com/leduc121/fcj_report/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/ selected>English</option><option id=vi value=https://github.com/leduc121/fcj_report/vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/>Tiếng Việt</option></select><svg id="Capa_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="255" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255"><g><g id="arrow-drop-down"><polygon points="0,63.75 127.5,191.25 255,63.75"/></g></g></svg></div></a></li><li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li></ul></section><section id=footer><left><b>Workshop</b><br><img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title=Migrate alt="web counter" border=0></a><br><b><a href=https://cloudjourney.awsstudygroup.com/>Cloud Journey</a></b><br><img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" alt="web counter" border=0>
+</left><left><br><br><b>Last Updated</b><br><i><span id=lastUpdated style=color:orange></span>
+</i><script>const today=new Date,formattedDate=today.toLocaleDateString("en-GB");document.getElementById("lastUpdated").textContent=formattedDate</script></left><left><br><br><b>Team</b><br><i><a href=https://www.facebook.com/groups/660548818043427 style=color:orange>First Cloud Journey</a><br></i></left><script async defer src=https://buttons.github.io/buttons.js></script></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i>
+</a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links><a href=../../../../>Internship Report</a> > <a href=../../../../5-workshop/>Workshop</a> > <a href=../../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/>Lambda Architecture</a> > Lamda-Deployment</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><ul><li><a href=#step-1-prepare-the-code>Step 1: Prepare the Code</a></li><li><a href=#step-2-build-the-docker-image>Step 2: Build the Docker Image</a></li><li><a href=#step-3-upload-to-aws-ecr>Step 3: Upload to AWS ECR</a></li><li><a href=#step-4-create-the-lambda-function>Step 4: Create the Lambda Function</a></li><li><a href=#step-5-create-api-gateway>Step 5: Create API Gateway</a></li><li><a href=#step-6-update-the-frontend>Step 6: Update the Frontend</a></li></ul></li><li><a href=#optimizations>Optimizations</a><ul><li><a href=#1-reduce-cold-start>1. Reduce Cold Start</a></li><li><a href=#2-reduce-image-size>2. Reduce Image Size</a></li><li><a href=#3-cache-the-model-in-tmp>3. Cache the Model in /tmp</a></li></ul></li><li><a href=#monitoring>Monitoring</a><ul><li><a href=#cloudwatch-logs>CloudWatch Logs</a></li></ul></li></ul><ul><li><ul><li><a href=#cloudwatch-metrics>CloudWatch Metrics</a></li><li><a href=#alerts>Alerts</a></li></ul></li><li><a href=#troubleshooting>Troubleshooting</a></li><li><a href=#estimated-cost>Estimated Cost</a></li><li><a href=#final-checklist>Final Checklist</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Lamda-Deployment</h1><h1 id=step-to-deploy-our-pytorch-model-on-storm-prediction-on-aws-lambda>Step to deploy our PyTorch Model on storm prediction on AWS Lambda</h1><p>AWS Lambda deployment plays a critical role in our website development pipeline. In this section, we document the process we followed to successfully complete the deployment.</p><h3 id=step-1-prepare-the-code>Step 1: Prepare the Code</h3><h4 id=11-update-apppy>1.1. Update app.py</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> json
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> torch
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> typing <span style=color:#f92672>import</span> List, Dict
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>MODEL_PATH <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;model.pth&#34;</span>
+</span></span><span style=display:flex><span>device <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>device(<span style=color:#e6db74>&#34;cpu&#34;</span>)  
+</span></span><span style=display:flex><span>model <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>load_model</span>():
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>global</span> model
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> model <span style=color:#f92672>is</span> <span style=color:#66d9ef>None</span>:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Loading model from </span><span style=color:#e6db74>{</span>MODEL_PATH<span style=color:#e6db74>}</span><span style=color:#e6db74>...&#34;</span>)
+</span></span><span style=display:flex><span>        model <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>load(MODEL_PATH, map_location<span style=color:#f92672>=</span>device)
+</span></span><span style=display:flex><span>        model<span style=color:#f92672>.</span>eval()
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;Model loaded successfully!&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> model
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>prepare_features</span>(history: List[Dict]) <span style=color:#f92672>-&gt;</span> torch<span style=color:#f92672>.</span>Tensor:
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Convert history into a tensor for the model
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    history: [{&#34;lat&#34;: 15.0, &#34;lng&#34;: 107.0}, ...]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># TODO: Implement feature engineering based on your model</span>
+</span></span><span style=display:flex><span>    lats <span style=color:#f92672>=</span> [p[<span style=color:#e6db74>&#34;lat&#34;</span>] <span style=color:#66d9ef>for</span> p <span style=color:#f92672>in</span> history]
+</span></span><span style=display:flex><span>    lngs <span style=color:#f92672>=</span> [p[<span style=color:#e6db74>&#34;lng&#34;</span>] <span style=color:#66d9ef>for</span> p <span style=color:#f92672>in</span> history]
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    features <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([lats <span style=color:#f92672>+</span> lngs])  <span style=color:#75715e># Shape: (1, 18)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> torch<span style=color:#f92672>.</span>tensor(features, dtype<span style=color:#f92672>=</span>torch<span style=color:#f92672>.</span>float32)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>format_predictions</span>(predictions: torch<span style=color:#f92672>.</span>Tensor, storm_name: str) <span style=color:#f92672>-&gt;</span> Dict:
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Format output to match what the frontend expects
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>    pred_array <span style=color:#f92672>=</span> predictions<span style=color:#f92672>.</span>detach()<span style=color:#f92672>.</span>cpu()<span style=color:#f92672>.</span>numpy()[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    forecast <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>    base_timestamp <span style=color:#f92672>=</span> int(time<span style=color:#f92672>.</span>time() <span style=color:#f92672>*</span> <span style=color:#ae81ff>1000</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>0</span>, len(pred_array), <span style=color:#ae81ff>2</span>):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> i <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>&lt;</span> len(pred_array):
+</span></span><span style=display:flex><span>            forecast<span style=color:#f92672>.</span>append({
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;lat&#34;</span>: float(pred_array[i]),
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;lng&#34;</span>: float(pred_array[i <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>]),
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;timestamp&#34;</span>: base_timestamp <span style=color:#f92672>+</span> (i <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span>) <span style=color:#f92672>*</span> <span style=color:#ae81ff>3600000</span>,  <span style=color:#75715e># +1 hour each</span>
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;windSpeed&#34;</span>: <span style=color:#ae81ff>120.0</span>,  <span style=color:#75715e># TODO: Predict from model</span>
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;pressure&#34;</span>: <span style=color:#ae81ff>980.0</span>,   <span style=color:#75715e># TODO: Predict from model</span>
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;category&#34;</span>: <span style=color:#e6db74>&#34;Category 3&#34;</span>,  <span style=color:#75715e># TODO: Classify from windSpeed</span>
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;confidence&#34;</span>: <span style=color:#ae81ff>0.85</span>
+</span></span><span style=display:flex><span>            })
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;storm_name&#34;</span>: storm_name,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;forecast&#34;</span>: forecast
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>handler</span>(event, context):
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Lambda handler function
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Parse input</span>
+</span></span><span style=display:flex><span>        body <span style=color:#f92672>=</span> json<span style=color:#f92672>.</span>loads(event<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;body&#39;</span>, <span style=color:#e6db74>&#39;</span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#39;</span>))
+</span></span><span style=display:flex><span>        history <span style=color:#f92672>=</span> body<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;history&#39;</span>, [])
+</span></span><span style=display:flex><span>        storm_name <span style=color:#f92672>=</span> body<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;storm_name&#39;</span>, <span style=color:#e6db74>&#39;Unknown Storm&#39;</span>)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Validate input</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> len(history) <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>9</span>:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;statusCode&#39;</span>: <span style=color:#ae81ff>400</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;headers&#39;</span>: {
+</span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#39;Content-Type&#39;</span>: <span style=color:#e6db74>&#39;application/json&#39;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#39;Access-Control-Allow-Origin&#39;</span>: <span style=color:#e6db74>&#39;*&#39;</span>
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;body&#39;</span>: json<span style=color:#f92672>.</span>dumps({
+</span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#39;error&#39;</span>: <span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;Need at least 9 positions, got </span><span style=color:#e6db74>{</span>len(history)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>
+</span></span><span style=display:flex><span>                })
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Load model</span>
+</span></span><span style=display:flex><span>        model <span style=color:#f92672>=</span> load_model()
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Prepare features</span>
+</span></span><span style=display:flex><span>        X <span style=color:#f92672>=</span> prepare_features(history)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Predict</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>with</span> torch<span style=color:#f92672>.</span>no_grad():
+</span></span><span style=display:flex><span>            predictions <span style=color:#f92672>=</span> model(X)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Format output</span>
+</span></span><span style=display:flex><span>        result <span style=color:#f92672>=</span> format_predictions(predictions, storm_name)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;statusCode&#39;</span>: <span style=color:#ae81ff>200</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;headers&#39;</span>: {
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;Content-Type&#39;</span>: <span style=color:#e6db74>&#39;application/json&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;Access-Control-Allow-Origin&#39;</span>: <span style=color:#e6db74>&#39;*&#39;</span>
+</span></span><span style=display:flex><span>            },
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;body&#39;</span>: json<span style=color:#f92672>.</span>dumps(result)
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>Exception</span> <span style=color:#66d9ef>as</span> e:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Error: </span><span style=color:#e6db74>{</span>str(e)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;statusCode&#39;</span>: <span style=color:#ae81ff>500</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;headers&#39;</span>: {
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;Content-Type&#39;</span>: <span style=color:#e6db74>&#39;application/json&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;Access-Control-Allow-Origin&#39;</span>: <span style=color:#e6db74>&#39;*&#39;</span>
+</span></span><span style=display:flex><span>            },
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;body&#39;</span>: json<span style=color:#f92672>.</span>dumps({
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;error&#39;</span>: str(e)
+</span></span><span style=display:flex><span>            })
+</span></span><span style=display:flex><span>        }
+</span></span></code></pre></div><h4 id=12-update-dockerfile>1.2. Update Dockerfile</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dockerfile data-lang=dockerfile><span style=display:flex><span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> public.ecr.aws/lambda/python:3.11</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Copy requirements and install</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> requirements.txt <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> pip install --no-cache-dir -r requirements.txt<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Copy model (rename to model.pth)</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> cropping_storm_7304_2l.pth <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span>/model.pth<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Copy code</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> app.py <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Set handler</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>CMD</span> [<span style=color:#e6db74>&#34;app.handler&#34;</span>]<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><h4 id=13-verify-requirementstxt>1.3. Verify requirements.txt</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span>torch==2.1.0
+</span></span><span style=display:flex><span>numpy==1.24.3
+</span></span></code></pre></div><h3 id=step-2-build-the-docker-image>Step 2: Build the Docker Image</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cd storm_prediction
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Build image</span>
+</span></span><span style=display:flex><span>docker build -t storm-prediction-model .
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Test locally (optional)</span>
+</span></span><span style=display:flex><span>docker run -p 9000:8080 storm-prediction-model
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Test with curl</span>
+</span></span><span style=display:flex><span>curl -X POST <span style=color:#e6db74>&#34;http://localhost:9000/2015-03-31/functions/function/invocations&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  -d <span style=color:#e6db74>&#39;{
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;body&#34;: &#34;{\&#34;history\&#34;: [{\&#34;lat\&#34;: 15.0, \&#34;lng\&#34;: 107.0}, {\&#34;lat\&#34;: 15.1, \&#34;lng\&#34;: 107.1}, {\&#34;lat\&#34;: 15.2, \&#34;lng\&#34;: 107.2}, {\&#34;lat\&#34;: 15.3, \&#34;lng\&#34;: 107.3}, {\&#34;lat\&#34;: 15.4, \&#34;lng\&#34;: 107.4}, {\&#34;lat\&#34;: 15.5, \&#34;lng\&#34;: 107.5}, {\&#34;lat\&#34;: 15.6, \&#34;lng\&#34;: 107.6}, {\&#34;lat\&#34;: 15.7, \&#34;lng\&#34;: 107.7}, {\&#34;lat\&#34;: 15.8, \&#34;lng\&#34;: 107.8}], \&#34;storm_name\&#34;: \&#34;Test Storm\&#34;}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  }&#39;</span>
+</span></span></code></pre></div><h3 id=step-3-upload-to-aws-ecr>Step 3: Upload to AWS ECR</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 1. Create ECR repository</span>
+</span></span><span style=display:flex><span>aws ecr create-repository <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --repository-name storm-prediction-model <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --region ap-southeast-1
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 2. Login Docker to ECR</span>
+</span></span><span style=display:flex><span>aws ecr get-login-password --region ap-southeast-1 | <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  docker login --username AWS --password-stdin <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  &lt;account-id&gt;.dkr.ecr.ap-southeast-1.amazonaws.com
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 3. Tag image</span>
+</span></span><span style=display:flex><span>docker tag storm-prediction-model:latest <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  &lt;account-id&gt;.dkr.ecr.ap-southeast-1.amazonaws.com/storm-prediction-model:latest
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 4. Push image</span>
+</span></span><span style=display:flex><span>docker push &lt;account-id&gt;.dkr.ecr.ap-southeast-1.amazonaws.com/storm-prediction-model:latest
+</span></span></code></pre></div><h3 id=step-4-create-the-lambda-function>Step 4: Create the Lambda Function</h3><h4 id=41-create-lambda-from-console>4.1. Create Lambda from Console</h4><ol><li>Open AWS Lambda Console</li><li>Click “Create function”</li><li>Choose “Container image”</li><li>Function name: <code>storm-prediction</code></li><li>Container image URI: select the image you pushed to ECR</li><li>Architecture: x86_64</li><li>Click “Create function”</li></ol><h4 id=42-configure-lambda>4.2. Configure Lambda</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Or use AWS CLI</span>
+</span></span><span style=display:flex><span>aws lambda create-function <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --function-name storm-prediction <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --package-type Image <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --code ImageUri<span style=color:#f92672>=</span>&lt;account-id&gt;.dkr.ecr.ap-southeast-1.amazonaws.com/storm-prediction-model:latest <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --role arn:aws:iam::&lt;account-id&gt;:role/lambda-execution-role <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --timeout <span style=color:#ae81ff>60</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --memory-size <span style=color:#ae81ff>3008</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --region ap-southeast-1
+</span></span></code></pre></div><p>Important configuration:</p><ul><li>Memory: 3008 MB (PyTorch models need RAM)</li><li>Timeout: 60 seconds (inference can take 10–30s)</li><li>Ephemeral storage: 512 MB (default; increase if needed)</li></ul><h4 id=43-create-iam-role>4.3. Create IAM Role</h4><p>Lambda needs a role with permissions:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;Version&#34;</span>: <span style=color:#e6db74>&#34;2012-10-17&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;Statement&#34;</span>: [
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Effect&#34;</span>: <span style=color:#e6db74>&#34;Allow&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Action&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;logs:CreateLogGroup&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;logs:CreateLogStream&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;logs:PutLogEvents&#34;</span>
+</span></span><span style=display:flex><span>      ],
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Resource&#34;</span>: <span style=color:#e6db74>&#34;arn:aws:logs:*:*:*&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Effect&#34;</span>: <span style=color:#e6db74>&#34;Allow&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Action&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;ecr:GetDownloadUrlForLayer&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;ecr:BatchGetImage&#34;</span>
+</span></span><span style=display:flex><span>      ],
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Resource&#34;</span>: <span style=color:#e6db74>&#34;*&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  ]
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=step-5-create-api-gateway>Step 5: Create API Gateway</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 1. Create REST API</span>
+</span></span><span style=display:flex><span>aws apigateway create-rest-api <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --name storm-prediction-api <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --region ap-southeast-1
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 2. Get API ID and Root Resource ID</span>
+</span></span><span style=display:flex><span>API_ID<span style=color:#f92672>=</span>&lt;your-api-id&gt;
+</span></span><span style=display:flex><span>ROOT_ID<span style=color:#f92672>=</span>&lt;your-root-resource-id&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 3. Create resource /predict</span>
+</span></span><span style=display:flex><span>aws apigateway create-resource <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --rest-api-id $API_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --parent-id $ROOT_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --path-part predict
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 4. Create POST method</span>
+</span></span><span style=display:flex><span>RESOURCE_ID<span style=color:#f92672>=</span>&lt;predict-resource-id&gt;
+</span></span><span style=display:flex><span>aws apigateway put-method <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --rest-api-id $API_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --resource-id $RESOURCE_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --http-method POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --authorization-type NONE
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 5. Integrate with Lambda</span>
+</span></span><span style=display:flex><span>aws apigateway put-integration <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --rest-api-id $API_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --resource-id $RESOURCE_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --http-method POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --type AWS_PROXY <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --integration-http-method POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --uri arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:&lt;account-id&gt;:function:storm-prediction/invocations
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 6. Deploy API</span>
+</span></span><span style=display:flex><span>aws apigateway create-deployment <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --rest-api-id $API_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --stage-name prod
+</span></span></code></pre></div><p>API URL: <code>https://&lt;api-id>.execute-api.ap-southeast-1.amazonaws.com/prod/predict</code></p><h3 id=step-6-update-the-frontend>Step 6: Update the Frontend</h3><h4 id=61-update-envproduction>6.1. Update <code>.env.production</code></h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-env data-lang=env><span style=display:flex><span>VITE_PREDICTION_API_URL<span style=color:#f92672>=</span>https://&lt;api-id&gt;.execute-api.ap-southeast-1.amazonaws.com/prod
+</span></span></code></pre></div><h4 id=62-build--deploy-frontend>6.2. Build & deploy frontend</h4><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cd frontend
+</span></span><span style=display:flex><span>npm run build
+</span></span><span style=display:flex><span><span style=color:#75715e># Deploy dist/ to S3/CloudFront</span>
+</span></span></code></pre></div><h2 id=optimizations>Optimizations</h2><h3 id=1-reduce-cold-start>1. Reduce Cold Start</h3><p>Provisioned Concurrency:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>aws lambda put-provisioned-concurrency-config <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --function-name storm-prediction <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --provisioned-concurrent-executions <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --qualifier $LATEST
+</span></span></code></pre></div><h3 id=2-reduce-image-size>2. Reduce Image Size</h3><p>Use PyTorch CPU-only:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span># requirements.txt
+</span></span><span style=display:flex><span>torch==2.1.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+</span></span><span style=display:flex><span>numpy==1.24.3
+</span></span></code></pre></div><p>Multi-stage build:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dockerfile data-lang=dockerfile><span style=display:flex><span><span style=color:#75715e># Stage 1: Build</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> python:3.11-slim as builder</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> requirements.txt .<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> pip install --target /packages -r requirements.txt<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Stage 2: Runtime</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> public.ecr.aws/lambda/python:3.11</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> --from<span style=color:#f92672>=</span>builder /packages <span style=color:#e6db74>${</span>LAMBDA_RUNTIME_DIR<span style=color:#e6db74>}</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> model.pth <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span>/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> app.py <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span>/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>CMD</span> [<span style=color:#e6db74>&#34;app.handler&#34;</span>]<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><h3 id=3-cache-the-model-in-tmp>3. Cache the Model in /tmp</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> os
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>MODEL_PATH <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;/tmp/model.pth&#34;</span> <span style=color:#66d9ef>if</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>exists(<span style=color:#e6db74>&#34;/tmp/model.pth&#34;</span>) <span style=color:#66d9ef>else</span> <span style=color:#e6db74>&#34;model.pth&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>load_model</span>():
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>global</span> model
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> model <span style=color:#f92672>is</span> <span style=color:#66d9ef>None</span>:
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Copy to /tmp for faster access</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>exists(<span style=color:#e6db74>&#34;/tmp/model.pth&#34;</span>):
+</span></span><span style=display:flex><span>            <span style=color:#f92672>import</span> shutil
+</span></span><span style=display:flex><span>            shutil<span style=color:#f92672>.</span>copy(<span style=color:#e6db74>&#34;model.pth&#34;</span>, <span style=color:#e6db74>&#34;/tmp/model.pth&#34;</span>)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        model <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>load(<span style=color:#e6db74>&#34;/tmp/model.pth&#34;</span>, map_location<span style=color:#f92672>=</span>device)
+</span></span><span style=display:flex><span>        model<span style=color:#f92672>.</span>eval()
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> model
+</span></span></code></pre></div><h2 id=monitoring>Monitoring</h2><h3 id=cloudwatch-logs>CloudWatch Logs</h3><p>`bash</p><h1 id=view-logs>View logs</h1><p>aws logs tail /aws/lambda/storm-prediction &ndash;follow
+`</p><h3 id=cloudwatch-metrics>CloudWatch Metrics</h3><ul><li>Invocations: number of calls</li><li>Duration: runtime</li><li>Errors: error count</li><li>Throttles: throttled invocations</li></ul><h3 id=alerts>Alerts</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Create an alarm for errors</span>
+</span></span><span style=display:flex><span>aws cloudwatch put-metric-alarm <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --alarm-name storm-prediction-errors <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --alarm-description <span style=color:#e6db74>&#34;Alert when Lambda has errors&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --metric-name Errors <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --namespace AWS/Lambda <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --statistic Sum <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --period <span style=color:#ae81ff>300</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --threshold <span style=color:#ae81ff>5</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --comparison-operator GreaterThanThreshold <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --dimensions Name<span style=color:#f92672>=</span>FunctionName,Value<span style=color:#f92672>=</span>storm-prediction
+</span></span></code></pre></div><h2 id=troubleshooting>Troubleshooting</h2><ul><li><p>Error: &ldquo;Task timed out after 3.00 seconds&rdquo;<br>Fix: Increase timeout to 60s</p></li><li><p>Error: &ldquo;Runtime exited with error: signal: killed&rdquo;<br>Fix: Increase memory to 3008 MB</p></li><li><p>Error: &ldquo;No module named &rsquo;torch&rsquo;&rdquo;<br>Fix: Check requirements.txt and rebuild the image</p></li><li><p>Error: Model cannot be loaded<br>Fix: Verify the model filename in Dockerfile and app.py match</p></li></ul><h2 id=estimated-cost>Estimated Cost</h2><ul><li>Lambda:</li></ul><ul><li>Free tier: 1M requests/month, 400,000 GB-seconds</li><li>After that: $0.20 per 1M requests + $0.0000166667 per GB-second</li></ul><ul><li>Example: 10,000 requests/month, each request 10s, 3GB RAM</li></ul><ul><li>Compute: 10,000 × 10s × 3GB × $0.0000166667 = ~$5/month</li><li>Requests: 10,000 × $0.20/1M = ~$0.002/month</li><li>Total: ~$5/month</li></ul><ul><li>API Gateway:</li></ul><ul><li>$3.50 per million requests</li><li>10,000 requests = ~$0.035/month</li></ul><ul><li>ECR:</li></ul><ul><li>$0.10 per GB/month storage</li><li>Image ~2GB = ~$0.20/month</li></ul><p>Estimated total: ~$5.25/month for 10,000 predictions</p><h2 id=final-checklist>Final Checklist</h2><ul><li><input disabled type=checkbox> Fix the model filename mismatch in app.py or Dockerfile</li><li><input disabled type=checkbox> Test the Docker image locally</li><li><input disabled type=checkbox> Push the image to ECR</li><li><input disabled type=checkbox> Create Lambda with 3008MB memory, 60s timeout</li><li><input disabled type=checkbox> Create API Gateway and integrate with Lambda</li><li><input disabled type=checkbox> Test the API with Postman/curl</li><li><input disabled type=checkbox> Update <code>VITE_PREDICTION_API_URL</code> in the frontend</li><li><input disabled type=checkbox> Build and deploy the frontend</li><li><input disabled type=checkbox> Test the prediction form on the web UI</li><li><input disabled type=checkbox> Set up CloudWatch alerts</li><li><input disabled type=checkbox> Monitor logs and performance</li></ul><footer class=footline></footer></div></div><div id=navigation><a class="nav nav-prev" href=../../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.2-fix-unicode-error-solution/ title=Fix-Unicode-Error><i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=../../../../5-workshop/5.5-platform-api/ title="Platform API" style=margin-right:0><i class="fa fa-chevron-right"></i></a></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=../../../../js/clipboard.min.js?1765248291></script><script src=../../../../js/perfect-scrollbar.min.js?1765248291></script><script src=../../../../js/perfect-scrollbar.jquery.min.js?1765248291></script><script src=../../../../js/jquery.sticky.js?1765248291></script><script src=../../../../js/featherlight.min.js?1765248291></script><script src=../../../../js/highlight.pack.js?1765248291></script><script>hljs.initHighlightingOnLoad()</script><script src=../../../../js/modernizr.custom-3.6.0.js?1765248291></script><script src=../../../../js/learn.js?1765248291></script><script src=../../../../js/hugo-learn.js?1765248291></script><link href=../../../../mermaid/mermaid.css?1765248291 rel=stylesheet><script src=../../../../mermaid/mermaid.js?1765248291></script><script>mermaid.initialize({startOnLoad:!0})</script><script>(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,(e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date),(i=t.createElement(n),a=t.getElementsByTagName(n)[0]),i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-158079754-2","auto"),ga("send","pageview")</script></body></html>

@@ -1,0 +1,387 @@
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.134.3"><meta name=description content><meta name=author content="thienlh@thienlu.com"><link rel=icon href=../../../images/favicon.png type=image/png><title>Lambda Architecture :: Internship Report</title>
+<link href=../../../css/nucleus.css?1765248291 rel=stylesheet><link href=../../../css/fontawesome-all.min.css?1765248291 rel=stylesheet><link href=../../../css/hybrid.css?1765248291 rel=stylesheet><link href=../../../css/featherlight.min.css?1765248291 rel=stylesheet><link href=../../../css/perfect-scrollbar.min.css?1765248291 rel=stylesheet><link href=../../../css/auto-complete.css?1765248291 rel=stylesheet><link href=../../../css/atom-one-dark-reasonable.css?1765248291 rel=stylesheet><link href=../../../css/theme.css?1765248291 rel=stylesheet><link href=../../../css/hugo-theme.css?1765248291 rel=stylesheet><link href=../../../css/theme-workshop.css?1765248291 rel=stylesheet><script src=../../../js/jquery-3.3.1.min.js?1765248291></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/><nav id=sidebar class=showVisitedLinks><div id=header-wrapper><div id=header><a id=logo href=../../../><svg id="Layer_1" data-name="Layer 1" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff}.cls-2{fill:#f90;fill-rule:evenodd}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09 10.85a4.7 4.7.0 00.19 1.48 7.73 7.73.0 00.54 1.19.77.77.0 01.12.38.64.64.0 01-.32.49l-1 .7a.83.83.0 01-.44.15.69.69.0 01-.49-.23 3.8 3.8.0 01-.6-.77q-.25-.42-.51-1a6.14 6.14.0 01-4.89 2.3 4.54 4.54.0 01-3.32-1.19 4.27 4.27.0 01-1.22-3.2 4.28 4.28.0 011.46-3.4A6.06 6.06.0 017.69 6.46a12.47 12.47.0 011.76.13q.92.13 1.91.36V5.73a3.65 3.65.0 00-.79-2.66A3.81 3.81.0 007.86 2.3a7.71 7.71.0 00-1.79.22 12.78 12.78.0 00-1.79.57 4.55 4.55.0 01-.58.22h-.26q-.35.0-.35-.52V2a1.09 1.09.0 01.12-.58 1.2 1.2.0 01.47-.35A10.88 10.88.0 015.77.32 10.19 10.19.0 018.36.0a6 6 0 014.35 1.35 5.49 5.49.0 011.38 4.09zM7.34 13.38a5.36 5.36.0 001.72-.31A3.63 3.63.0 0010.63 12 2.62 2.62.0 0011.19 11a5.63 5.63.0 00.16-1.44v-.7a14.35 14.35.0 00-1.53-.28 12.37 12.37.0 00-1.56-.1 3.84 3.84.0 00-2.47.67A2.34 2.34.0 005 11a2.35 2.35.0 00.61 1.76A2.4 2.4.0 007.34 13.38zm13.35 1.8a1 1 0 01-.64-.16 1.3 1.3.0 01-.35-.65L15.81 1.51a3 3 0 01-.15-.67.36.36.0 01.41-.41H17.7a1 1 0 01.65.16 1.4 1.4.0 01.33.65l2.79 11 2.59-11A1.17 1.17.0 0124.39.6a1.1 1.1.0 01.67-.16H26.4a1.1 1.1.0 01.67.16 1.17 1.17.0 01.32.65L30 12.39 32.88 1.25A1.39 1.39.0 0133.22.6a1 1 0 01.65-.16h1.54a.36.36.0 01.41.41 1.36 1.36.0 010 .26 3.64 3.64.0 01-.12.41l-4 12.86a1.3 1.3.0 01-.35.65 1 1 0 01-.64.16H29.25a1 1 0 01-.67-.17 1.26 1.26.0 01-.32-.67L25.67 3.64l-2.56 10.7a1.26 1.26.0 01-.32.67 1 1 0 01-.67.17zm21.36.44a11.28 11.28.0 01-2.56-.29 7.44 7.44.0 01-1.92-.67 1 1 0 01-.61-.93v-.84q0-.52.38-.52a.9.9.0 01.31.06l.42.17a8.77 8.77.0 001.83.58 9.78 9.78.0 002 .2 4.48 4.48.0 002.43-.55 1.76 1.76.0 00.86-1.57 1.61 1.61.0 00-.45-1.16A4.29 4.29.0 0043 9.22l-2.41-.76A5.15 5.15.0 0138 6.78a3.94 3.94.0 01-.83-2.41 3.7 3.7.0 01.45-1.85 4.47 4.47.0 011.19-1.37 5.27 5.27.0 011.7-.86A7.4 7.4.0 0142.6.0a8.87 8.87.0 011.12.07q.57.07 1.08.19t.95.26a4.27 4.27.0 01.7.29 1.59 1.59.0 01.49.41.94.94.0 01.15.55v.79q0 .52-.38.52a1.76 1.76.0 01-.64-.2 7.74 7.74.0 00-3.2-.64 4.37 4.37.0 00-2.21.47 1.6 1.6.0 00-.79 1.48 1.58 1.58.0 00.49 1.18 4.94 4.94.0 001.83.92L44.55 7a5.08 5.08.0 012.57 1.6A3.76 3.76.0 0147.9 11a4.21 4.21.0 01-.44 1.93 4.4 4.4.0 01-1.21 1.47 5.43 5.43.0 01-1.85.93A8.25 8.25.0 0142.05 15.62z"/><path class="cls-2" d="M45.19 23.81C39.72 27.85 31.78 30 25 30A36.64 36.64.0 01.22 20.57c-.51-.46-.06-1.09.56-.74A49.78 49.78.0 0025.53 26.4 49.23 49.23.0 0044.4 22.53C45.32 22.14 46.1 23.14 45.19 23.81z"/><path class="cls-2" d="M47.47 21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74 3.13-2.2 8.27-1.57 8.86-.83s-.16 5.89-3.09 8.35c-.45.38-.88.18-.68-.32C46.69 25.8 48.17 22.11 47.47 21.21z"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=../../../js/lunr.min.js?1765248291></script><script type=text/javascript src=../../../js/auto-complete.js?1765248291></script><script type=text/javascript>var baseurl="https://github.com/leduc121/fcj_report/"</script><script type=text/javascript src=../../../js/search.js?1765248291></script></div><div class=highlightable><ul class=topics><li data-nav-id=/1-worklog/ title=Worklog class=dd-item><a href=../../../1-worklog/><b>1. </b>Worklog
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/1-worklog/1.1-week1/ title="Week 1 Worklog" class=dd-item><a href=../../../1-worklog/1.1-week1/><b>1.1. </b>Week 1 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.2-week2/ title="Week 2 Worklog" class=dd-item><a href=../../../1-worklog/1.2-week2/><b>1.2. </b>Week 2 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.3-week3/ title="Week 3 Worklog" class=dd-item><a href=../../../1-worklog/1.3-week3/><b>1.3. </b>Week 3 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.4-week4/ title="Week 4 Worklog" class=dd-item><a href=../../../1-worklog/1.4-week4/><b>1.4. </b>Week 4 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.5-week5/ title="Week 5 Worklog" class=dd-item><a href=../../../1-worklog/1.5-week5/><b>1.5. </b>Week 5 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.6-week6/ title="Week 6 Worklog" class=dd-item><a href=../../../1-worklog/1.6-week6/><b>1.6. </b>Week 6 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.7-week7/ title="Week 7 Worklog" class=dd-item><a href=../../../1-worklog/1.7-week7/><b>1.7. </b>Week 7 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.8-week8/ title="Week 8 Worklog" class=dd-item><a href=../../../1-worklog/1.8-week8/><b>1.8. </b>Week 8 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.9-week9/ title="Week 9 Worklog" class=dd-item><a href=../../../1-worklog/1.9-week9/><b>1.9. </b>Week 9 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.10-week10/ title="Week 10 Worklog" class=dd-item><a href=../../../1-worklog/1.10-week10/><b>1.10. </b>Week 10 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.11-week11/ title="Week 11 Worklog" class=dd-item><a href=../../../1-worklog/1.11-week11/><b>1.11. </b>Week 11 Worklog
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/1-worklog/1.12-week12/ title="Week 12 Worklog" class=dd-item><a href=../../../1-worklog/1.12-week12/><b>1.12. </b>Week 12 Worklog
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/2-proposal/ title=Proposal class=dd-item><a href=../../../2-proposal/><b>2. </b>Proposal
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/3-blogstranslated/ title="Translated Blogs" class=dd-item><a href=../../../3-blogstranslated/><b>3. </b>Translated Blogs
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/3-blogstranslated/3.1-blog1/ title="Blog 1" class=dd-item><a href=../../../3-blogstranslated/3.1-blog1/><b>3.1. </b>Blog 1
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/3-blogstranslated/3.2-blog2/ title="Blog 2" class=dd-item><a href=../../../3-blogstranslated/3.2-blog2/><b>3.2. </b>Blog 2
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/3-blogstranslated/3.3-blog3/ title="Blog 3" class=dd-item><a href=../../../3-blogstranslated/3.3-blog3/><b>3.3. </b>Blog 3
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/4-eventparticipated/ title="Events Participated" class=dd-item><a href=../../../4-eventparticipated/><b>4. </b>Events Participated
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/4-eventparticipated/4.1-event1/ title="AWS CLOUD DAY" class=dd-item><a href=../../../4-eventparticipated/4.1-event1/><b>4.1. </b>AWS CLOUD DAY
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/4-eventparticipated/4.2-event2/ title="Cloud Mastery 1" class=dd-item><a href=../../../4-eventparticipated/4.2-event2/><b>4.2. </b>Cloud Mastery 1
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/4-eventparticipated/4.3-event3/ title="AWS Cloud Mastery Series #2" class=dd-item><a href=../../../4-eventparticipated/4.3-event3/><b>4.3. </b>AWS Cloud Mastery Series #2
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/4-eventparticipated/4.4-event4/ title="AWS Cloud Mastery Series #1" class=dd-item><a href=../../../4-eventparticipated/4.4-event4/><b>4.4. </b>AWS Cloud Mastery Series #1
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/ title=Workshop class="dd-item
+parent"><a href=../../../5-workshop/><b>5. </b>Workshop
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.1-workshop-overview/ title=Introduction class=dd-item><a href=../../../5-workshop/5.1-workshop-overview/><b>5.1. </b>Introduction
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.2-data-preparation/ title="Data Preparation" class=dd-item><a href=../../../5-workshop/5.2-data-preparation/><b>5.2. </b>Data Preparation
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.3-ml-model/ title="Machine Learning Model" class=dd-item><a href=../../../5-workshop/5.3-ml-model/><b>5.3. </b>Machine Learning Model
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-frontback-end/5.4.1-frontend-architecture/ title="Frontend Architecture" class=dd-item><a href=../../../5-workshop/5.4-frontback-end/5.4.1-frontend-architecture/><b>5.4.1 </b>Frontend Architecture
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/ title="Lambda Architecture" class="dd-item
+active"><a href=../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/><b>5.4.2 </b>Lambda Architecture
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.1-ai-model-integration/ title=AI-Model-Integration class=dd-item><a href=../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.1-ai-model-integration/><b>5.4.2.1 </b>AI-Model-Integration
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.2-fix-unicode-error-solution/ title=Fix-Unicode-Error class=dd-item><a href=../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.2-fix-unicode-error-solution/><b>5.4.2.2 </b>Fix-Unicode-Error
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/ title=Lamda-Deployment class=dd-item><a href=../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/><b>5.4.2.3 </b>Lamda-Deployment
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/5-workshop/5.5-platform-api/ title="Platform API" class=dd-item><a href=../../../5-workshop/5.5-platform-api/><b>5.5. </b>Platform API
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/6-self-evaluation/ title=Self-Assessment class=dd-item><a href=../../../6-self-evaluation/><b>6. </b>Self-Assessment
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/7-feedback/ title="Sharing and Feedback" class=dd-item><a href=../../../7-feedback/><b>7. </b>Sharing and Feedback
+<i class="fas fa-check read-icon"></i></a></li></ul><section id=shortcuts><h3>More</h3><ul><li><a class=padding href=https://www.facebook.com/groups/awsstudygroupfcj/><i class='fab fa-facebook'></i> AWS Study Group</a></li></ul></section><section id=prefooter><hr><ul><li><a class=padding><i class="fas fa-language fa-fw"></i><div class=select-style><select id=select-language onchange="location=this.value"><option id=en value=https://github.com/leduc121/fcj_report/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/ selected>English</option><option id=vi value=https://github.com/leduc121/fcj_report/vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/>Tiếng Việt</option></select><svg id="Capa_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="255" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255"><g><g id="arrow-drop-down"><polygon points="0,63.75 127.5,191.25 255,63.75"/></g></g></svg></div></a></li><li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li></ul></section><section id=footer><left><b>Workshop</b><br><img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title=Migrate alt="web counter" border=0></a><br><b><a href=https://cloudjourney.awsstudygroup.com/>Cloud Journey</a></b><br><img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" alt="web counter" border=0>
+</left><left><br><br><b>Last Updated</b><br><i><span id=lastUpdated style=color:orange></span>
+</i><script>const today=new Date,formattedDate=today.toLocaleDateString("en-GB");document.getElementById("lastUpdated").textContent=formattedDate</script></left><left><br><br><b>Team</b><br><i><a href=https://www.facebook.com/groups/660548818043427 style=color:orange>First Cloud Journey</a><br></i></left><script async defer src=https://buttons.github.io/buttons.js></script></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i>
+</a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links><a href=../../../>Internship Report</a> > <a href=../../../5-workshop/>Workshop</a> > Lambda Architecture</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#overview>Overview</a></li><li><a href=#aws-services-architecture>AWS Services Architecture</a></li><li><a href=#storm_prediction-directory-structure>storm_prediction/ Directory Structure</a></li><li><a href=#docker-image-structure>Docker Image Structure</a><ul><li><a href=#dockerfile>Dockerfile</a></li><li><a href=#image-layers>Image Layers</a></li></ul></li><li><a href=#ai-models>AI Models</a><ul><li><a href=#1-tcn-model-trajectory-prediction>1. TCN Model (Trajectory Prediction)</a></li><li><a href=#2-lstm-model-total-distance-prediction>2. LSTM Model (Total Distance Prediction)</a></li></ul></li><li><a href=#request-flow>Request Flow</a><ul><li><a href=#1-receive-request>1. Receive Request</a></li><li><a href=#2-load-models-first-invocation-only>2. Load Models (First Invocation Only)</a></li><li><a href=#3-preprocess-input>3. Preprocess Input</a></li><li><a href=#4-predict-total-distance-lstm>4. Predict Total Distance (LSTM)</a></li><li><a href=#5-predict-path-tcn>5. Predict Path (TCN)</a></li><li><a href=#6-return-response>6. Return Response</a></li></ul></li><li><a href=#build--deploy-process>Build & Deploy Process</a><ul><li><a href=#step-1-build-docker-image>Step 1: Build Docker Image</a></li><li><a href=#step-2-tag-for-ecr>Step 2: Tag for ECR</a></li><li><a href=#step-3-login-to-ecr>Step 3: Login to ECR</a></li><li><a href=#step-4-push-to-ecr>Step 4: Push to ECR</a></li><li><a href=#step-5-update-lambda-function>Step 5: Update Lambda Function</a></li></ul></li><li><a href=#lambda-configuration>Lambda Configuration</a><ul><li><a href=#function-settings>Function Settings</a></li><li><a href=#environment-variables>Environment Variables</a></li><li><a href=#function-url>Function URL</a></li><li><a href=#iam-role-permissions>IAM Role Permissions</a></li></ul></li><li><a href=#monitoring--logs>Monitoring & Logs</a><ul><li><a href=#cloudwatch-logs>CloudWatch Logs</a></li><li><a href=#metrics>Metrics</a></li></ul></li><li><a href=#common-issues--solutions>Common Issues & Solutions</a><ul><li><a href=#1-unicodedecodeerror-utf-8-codec-cant-decode-byte-0x80>1. UnicodeDecodeError: &lsquo;utf-8&rsquo; codec can&rsquo;t decode byte 0x80</a></li><li><a href=#2-502-bad-gateway>2. 502 Bad Gateway</a></li><li><a href=#3-lstm-fallback>3. LSTM Fallback</a></li><li><a href=#4-ecr-push-403-forbidden>4. ECR Push 403 Forbidden</a></li></ul></li><li><a href=#testing>Testing</a><ul><li><a href=#local-test-if-possible>Local Test (if possible)</a></li><li><a href=#lambda-test>Lambda Test</a></li><li><a href=#curl-test>cURL Test</a></li></ul></li><li><a href=#deployment-checklist>Deployment Checklist</a></li><li><a href=#screenshots>Screenshots</a><ul><li></li></ul></li><li><a href=#ecr>ECR</a><ul><li><a href=#repository>Repository</a></li></ul></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Lambda Architecture</h1><h1 id=lambda-architecture---storm-prediction-ai-service>Lambda Architecture - Storm Prediction AI Service</h1><h2 id=overview>Overview</h2><p>Lambda functions are an important component of a serverless architecture. They are especially useful due to their cost-effectiveness and ease of deployment—both of which are valuable for our hurricane prediction platform.</p><p>This section presents the details of how we designed and built our Lambda architecture.</p><p>Our Lambda functions run PyTorch models for typhoon trajectory prediction and are deployed using a Docker container image.</p><h2 id=aws-services-architecture>AWS Services Architecture</h2><pre tabindex=0><code>┌─────────────────────────────────────────────────────────────┐
+│                      Frontend (Browser)                     │
+└────────────────────────┬────────────────────────────────────┘
+                         │ POST /predict
+                         ▼
+┌─────────────────────────────────────────────────────────────┐
+│              Lambda Function URL (Public)                   │
+│  URL: https://vill3povlzqxdyxm7ubldizobu0kdgbi...           │
+│  Auth: NONE                                                 │
+│  Method: POST                                               │
+└────────────────────────┬────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   Lambda Function                           │
+│  Name: storm-prediction                                     │
+│  Runtime: Python 3.10 (Container)                           │
+│  Memory: 3008 MB                                            │
+│  Timeout: 120 seconds                                       │
+│  Architecture: x86_64                                       │
+└────────────────────────┬────────────────────────────────────┘
+                         │
+                         ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   ECR Repository                            │
+│  Account: 339570693867                                      │
+│  Region: ap-southeast-1                                     │
+│  Repo: storm-prediction                                     │
+│  Image: latest                                              │
+│  Size: ~2 GB                                                │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│                   S3 Buckets                                │
+│  1. storm-frontend-hosting-duc-2025                         │
+│     - models/lstm_totald_256_4.pt (optional)                │
+│     - predictions/[storm_id]_[timestamp].json               │
+│                                                             │
+│  2. storm-ai-models (recommended)                           │
+│     - models/lstm_totald_256_4.pt                           │
+│     - models/tcn_model.pth (backup)                         │
+└─────────────────────────────────────────────────────────────┘
+</code></pre><h2 id=storm_prediction-directory-structure>storm_prediction/ Directory Structure</h2><pre tabindex=0><code>storm_prediction/
+├── app.py                          # Lambda handler (main code)
+├── Dockerfile                      # Container definition
+├── requirements.txt                # Python dependencies
+├── cropping_storm_7304_2l.pth     # TCN model (included in image)
+│
+├── DEPLOY_NOW.md                   # Quick deploy guide
+├── DEPLOY_CONSOLE_STEP_BY_STEP.md # AWS Console guide
+├── LAMBDA_DEPLOYMENT_GUIDE.md      # Detailed deployment
+├── AWS_CONSOLE_DEPLOYMENT_GUIDE.md
+├── FIX_ECR_PUSH_ERROR.md          # Troubleshooting
+├── FIX_UNICODE_ERROR.md           # UnicodeDecodeError fix
+├── FIX_UNICODE_ERROR_SOLUTION.md  # Solution details
+└── REBUILD_AND_DEPLOY.sh          # Automated script
+</code></pre><h2 id=docker-image-structure>Docker Image Structure</h2><h3 id=dockerfile>Dockerfile</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dockerfile data-lang=dockerfile><span style=display:flex><span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> public.ecr.aws/lambda/python:3.10</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Install dependencies</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> requirements.txt .<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> pip3 install -r requirements.txt <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --target <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    --extra-index-url https://download.pytorch.org/whl/cpu<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Copy Lambda handler</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> app.py <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Copy TCN model to subdirectory (avoid .pth confusion)</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> mkdir -p <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span>/models<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> cropping_storm_7304_2l.pth <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span>/models/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Set handler</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>CMD</span> [ <span style=color:#e6db74>&#34;app.handler&#34;</span> ]<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><h3 id=image-layers>Image Layers</h3><pre tabindex=0><code>Layer 1: AWS Lambda Python 3.10 base (~500 MB)
+Layer 2: PyTorch CPU + dependencies (~1.2 GB)
+Layer 3: app.py + TCN model (~300 MB)
+─────────────────────────────────────────────
+Total: ~2 GB
+</code></pre><h2 id=ai-models>AI Models</h2><h3 id=1-tcn-model-trajectory-prediction>1. TCN Model (Trajectory Prediction)</h3><p><strong>File</strong>: <code>cropping_storm_7304_2l.pth</code>
+<strong>Location</strong>: Inside Docker image at <code>/var/task/models/</code>
+<strong>Size</strong>: ~300 MB
+<strong>Purpose</strong>: Predict next step (lat, lng) of typhoon trajectory</p><p><strong>Architecture</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StormTCN</span>(nn<span style=color:#f92672>.</span>Module):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, input_dim<span style=color:#f92672>=</span><span style=color:#ae81ff>4</span>, hidden_units<span style=color:#f92672>=</span><span style=color:#ae81ff>1024</span>, num_layers<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span>):
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>tcn <span style=color:#f92672>=</span> TCN(<span style=color:#f92672>...</span>)
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>head_latlon <span style=color:#f92672>=</span> nn<span style=color:#f92672>.</span>Linear(hidden_units, <span style=color:#ae81ff>2</span>)  <span style=color:#75715e># Predict lat, lng</span>
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>head_aux <span style=color:#f92672>=</span> nn<span style=color:#f92672>.</span>Linear(hidden_units, <span style=color:#ae81ff>2</span>)     <span style=color:#75715e># Predict aux features</span>
+</span></span></code></pre></div><p><strong>Input</strong>: <code>[batch, sequence, 4]</code> - (lat, lng, distance, bearing)
+<strong>Output</strong>:</p><ul><li><code>pred_latlon</code>: Next (lat, lng)</li><li><code>pred_aux</code>: Auxiliary features</li></ul><h3 id=2-lstm-model-total-distance-prediction>2. LSTM Model (Total Distance Prediction)</h3><p><strong>File</strong>: <code>lstm_totald_256_4.pt</code>
+<strong>Location</strong>: S3 bucket (downloaded on first use)
+<strong>Size</strong>: ~50 MB
+<strong>Purpose</strong>: Predict total distance typhoon will travel</p><p><strong>Architecture</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>StormLSTM</span>(nn<span style=color:#f92672>.</span>Module):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, input_size<span style=color:#f92672>=</span><span style=color:#ae81ff>4</span>, hidden_size<span style=color:#f92672>=</span><span style=color:#ae81ff>256</span>, num_layers<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span>):
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>lstm <span style=color:#f92672>=</span> nn<span style=color:#f92672>.</span>LSTM(<span style=color:#f92672>...</span>)
+</span></span><span style=display:flex><span>        self<span style=color:#f92672>.</span>fc <span style=color:#f92672>=</span> nn<span style=color:#f92672>.</span>Sequential(
+</span></span><span style=display:flex><span>            nn<span style=color:#f92672>.</span>Linear(hidden_size, hidden_size <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span>),
+</span></span><span style=display:flex><span>            nn<span style=color:#f92672>.</span>ReLU(),
+</span></span><span style=display:flex><span>            nn<span style=color:#f92672>.</span>Linear(hidden_size <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>1</span>)  <span style=color:#75715e># Predict total distance</span>
+</span></span><span style=display:flex><span>        )
+</span></span></code></pre></div><p><strong>Input</strong>: Daily summary <code>[batch, days, 4]</code> - (day, daily_dist, avg_speed, motion_type)
+<strong>Output</strong>: Total distance (km)</p><h2 id=request-flow>Request Flow</h2><h3 id=1-receive-request>1. Receive Request</h3><pre tabindex=0><code>POST /predict
+Content-Type: application/json
+
+{
+  &#34;history&#34;: [
+    {&#34;lat&#34;: 15.0, &#34;lng&#34;: 120.0},
+    {&#34;lat&#34;: 15.1, &#34;lng&#34;: 120.1},
+    ...  // Min 9 points
+  ],
+  &#34;storm_name&#34;: &#34;Test Storm&#34;,
+  &#34;storm_id&#34;: &#34;TEST001&#34;  // Optional
+}
+</code></pre><h3 id=2-load-models-first-invocation-only>2. Load Models (First Invocation Only)</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>load_models</span>():
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>global</span> LSTM_MODEL, TCN_MODEL
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Load LSTM from S3 (if available)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>exists(<span style=color:#e6db74>&#39;/tmp/lstm_model.pt&#39;</span>):
+</span></span><span style=display:flex><span>        s3_client<span style=color:#f92672>.</span>download_file(
+</span></span><span style=display:flex><span>            MODEL_BUCKET,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;models/lstm_totald_256_4.pt&#39;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;/tmp/lstm_model.pt&#39;</span>
+</span></span><span style=display:flex><span>        )
+</span></span><span style=display:flex><span>    LSTM_MODEL <span style=color:#f92672>=</span> StormLSTM(<span style=color:#f92672>...</span>)
+</span></span><span style=display:flex><span>    LSTM_MODEL<span style=color:#f92672>.</span>load_state_dict(torch<span style=color:#f92672>.</span>load(<span style=color:#e6db74>&#39;/tmp/lstm_model.pt&#39;</span>))
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Load TCN from local (already in image)</span>
+</span></span><span style=display:flex><span>    TCN_MODEL <span style=color:#f92672>=</span> StormTCN(<span style=color:#f92672>...</span>)
+</span></span><span style=display:flex><span>    TCN_MODEL<span style=color:#f92672>.</span>load_state_dict(
+</span></span><span style=display:flex><span>        torch<span style=color:#f92672>.</span>load(<span style=color:#e6db74>&#39;/var/task/models/cropping_storm_7304_2l.pth&#39;</span>)
+</span></span><span style=display:flex><span>    )
+</span></span></code></pre></div><h3 id=3-preprocess-input>3. Preprocess Input</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>preprocess_history</span>(history):
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Convert to tensor [1, sequence_length, 4]</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Features: [lat, lng, distance, bearing]</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    processed <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(len(history)):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> i <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>            processed<span style=color:#f92672>.</span>append([lat, lng, <span style=color:#ae81ff>0.0</span>, <span style=color:#ae81ff>0.0</span>])
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>            dist <span style=color:#f92672>=</span> haversine(prev_lat, prev_lng, lat, lng)
+</span></span><span style=display:flex><span>            brng <span style=color:#f92672>=</span> bearing(prev_lat, prev_lng, lat, lng)
+</span></span><span style=display:flex><span>            processed<span style=color:#f92672>.</span>append([lat, lng, dist, brng])
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> torch<span style=color:#f92672>.</span>tensor(processed)<span style=color:#f92672>.</span>unsqueeze(<span style=color:#ae81ff>0</span>)
+</span></span></code></pre></div><h3 id=4-predict-total-distance-lstm>4. Predict Total Distance (LSTM)</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>predict_total_distance</span>(record_tensor):
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> LSTM_MODEL <span style=color:#f92672>is</span> <span style=color:#66d9ef>None</span>:
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Fallback: avg_distance * 24 steps</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> fallback_distance
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Group by day (9 points/day)</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Run LSTM prediction</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>with</span> torch<span style=color:#f92672>.</span>no_grad():
+</span></span><span style=display:flex><span>        pred <span style=color:#f92672>=</span> LSTM_MODEL(summary_tensor, lengths)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> pred<span style=color:#f92672>.</span>item()  <span style=color:#75715e># km</span>
+</span></span></code></pre></div><h3 id=5-predict-path-tcn>5. Predict Path (TCN)</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>predict_storm_path</span>(record_tensor, total_distance, history):
+</span></span><span style=display:flex><span>    seq <span style=color:#f92672>=</span> record_tensor<span style=color:#f92672>.</span>clone()
+</span></span><span style=display:flex><span>    gone_distance <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    predicted_points <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> gone_distance <span style=color:#f92672>&lt;</span> total_distance:
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Predict next position</span>
+</span></span><span style=display:flex><span>        pred_latlon, pred_aux <span style=color:#f92672>=</span> TCN_MODEL(seq)
+</span></span><span style=display:flex><span>        new_lat <span style=color:#f92672>=</span> pred_latlon[<span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>0</span>]<span style=color:#f92672>.</span>item()
+</span></span><span style=display:flex><span>        new_lng <span style=color:#f92672>=</span> pred_latlon[<span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>1</span>]<span style=color:#f92672>.</span>item()
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Calculate distance &amp; bearing</span>
+</span></span><span style=display:flex><span>        step_distance <span style=color:#f92672>=</span> haversine(last_lat, last_lng, new_lat, new_lng)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Estimate windspeed (decay over time)</span>
+</span></span><span style=display:flex><span>        estimated_wind <span style=color:#f92672>=</span> max(avg_wind <span style=color:#f92672>*</span> (<span style=color:#ae81ff>0.98</span> <span style=color:#f92672>**</span> step), <span style=color:#ae81ff>30</span>)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        predicted_points<span style=color:#f92672>.</span>append({
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;lat&#39;</span>: new_lat,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;lng&#39;</span>: new_lng,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;timestamp&#39;</span>: base_timestamp <span style=color:#f92672>+</span> (step <span style=color:#f92672>*</span> <span style=color:#ae81ff>3</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>3600</span> <span style=color:#f92672>*</span> <span style=color:#ae81ff>1000</span>),
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;windSpeed&#39;</span>: estimated_wind,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;pressure&#39;</span>: <span style=color:#ae81ff>980.0</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;category&#39;</span>: calculate_category(estimated_wind)
+</span></span><span style=display:flex><span>        })
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Update sequence (sliding window)</span>
+</span></span><span style=display:flex><span>        seq <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>cat([seq[:, <span style=color:#ae81ff>1</span>:, :], next_point<span style=color:#f92672>.</span>unsqueeze(<span style=color:#ae81ff>1</span>)], dim<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>)
+</span></span><span style=display:flex><span>        gone_distance <span style=color:#f92672>+=</span> step_distance
+</span></span><span style=display:flex><span>        step <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> predicted_points
+</span></span></code></pre></div><h3 id=6-return-response>6. Return Response</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>result <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#39;storm_id&#39;</span>: storm_id,
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#39;storm_name&#39;</span>: storm_name,
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#39;prediction_time&#39;</span>: datetime<span style=color:#f92672>.</span>now()<span style=color:#f92672>.</span>isoformat(),
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#39;totalDistance&#39;</span>: <span style=color:#ae81ff>500.5</span>,
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#39;actualDistance&#39;</span>: <span style=color:#ae81ff>520.3</span>,
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#39;lifespan&#39;</span>: <span style=color:#ae81ff>72</span>,
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#39;forecastHours&#39;</span>: <span style=color:#ae81ff>72</span>,
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#39;forecast&#39;</span>: [
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;lat&#39;</span>: <span style=color:#ae81ff>15.1</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;lng&#39;</span>: <span style=color:#ae81ff>106.99</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;timestamp&#39;</span>: <span style=color:#ae81ff>1765015351626</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;windSpeed&#39;</span>: <span style=color:#ae81ff>65</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;pressure&#39;</span>: <span style=color:#ae81ff>980</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;category&#39;</span>: <span style=color:#e6db74>&#39;Typhoon&#39;</span>
+</span></span><span style=display:flex><span>        },
+</span></span><span style=display:flex><span>        <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>    ]
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#39;statusCode&#39;</span>: <span style=color:#ae81ff>200</span>,
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#39;headers&#39;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#39;Content-Type&#39;</span>: <span style=color:#e6db74>&#39;application/json&#39;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#39;Access-Control-Allow-Origin&#39;</span>: <span style=color:#e6db74>&#39;*&#39;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#39;body&#39;</span>: json<span style=color:#f92672>.</span>dumps(result)
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=build--deploy-process>Build & Deploy Process</h2><h3 id=step-1-build-docker-image>Step 1: Build Docker Image</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cd storm_prediction
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>docker build <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --provenance<span style=color:#f92672>=</span>false <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --platform linux/amd64 <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  -t storm-prediction-model .
+</span></span></code></pre></div><p><strong>Flags</strong>:</p><ul><li><code>--provenance=false</code>: Reduce image size (no build metadata)</li><li><code>--platform linux/amd64</code>: Lambda only supports x86_64</li><li><code>-t storm-prediction-model</code>: Tag name</li></ul><h3 id=step-2-tag-for-ecr>Step 2: Tag for ECR</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker tag storm-prediction-model:latest <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  339570693867.dkr.ecr.ap-southeast-1.amazonaws.com/storm-prediction:latest
+</span></span></code></pre></div><h3 id=step-3-login-to-ecr>Step 3: Login to ECR</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>aws ecr get-login-password --region ap-southeast-1 | <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  docker login --username AWS --password-stdin <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  339570693867.dkr.ecr.ap-southeast-1.amazonaws.com
+</span></span></code></pre></div><h3 id=step-4-push-to-ecr>Step 4: Push to ECR</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>docker push <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  339570693867.dkr.ecr.ap-southeast-1.amazonaws.com/storm-prediction:latest
+</span></span></code></pre></div><p><strong>Time</strong>: ~5-10 minutes (2GB upload)</p><h3 id=step-5-update-lambda-function>Step 5: Update Lambda Function</h3><p><strong>AWS Console</strong>:</p><ol><li>Lambda → storm-prediction</li><li>Tab <strong>Image</strong> → <strong>Deploy new image</strong></li><li>Select latest image</li><li>Click <strong>Save</strong></li></ol><h2 id=lambda-configuration>Lambda Configuration</h2><h3 id=function-settings>Function Settings</h3><pre tabindex=0><code>Name: storm-prediction
+Runtime: Container image
+Architecture: x86_64
+Memory: 3008 MB
+Timeout: 120 seconds
+Ephemeral storage: 512 MB
+</code></pre><h3 id=environment-variables>Environment Variables</h3><pre tabindex=0><code>MODEL_BUCKET=storm-frontend-hosting-duc-2025
+DATA_BUCKET=storm-frontend-hosting-duc-2025
+</code></pre><h3 id=function-url>Function URL</h3><pre tabindex=0><code>URL: https://vill3povlzqxdyxm7ubldizobu0kdgbi.lambda-url.ap-southeast-1.on.aws
+Auth type: NONE
+CORS: Enabled
+  - Allow origins: *
+  - Allow methods: POST, OPTIONS
+  - Allow headers: Content-Type
+</code></pre><h3 id=iam-role-permissions>IAM Role Permissions</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;Version&#34;</span>: <span style=color:#e6db74>&#34;2012-10-17&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;Statement&#34;</span>: [
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Effect&#34;</span>: <span style=color:#e6db74>&#34;Allow&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Action&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;logs:CreateLogGroup&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;logs:CreateLogStream&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;logs:PutLogEvents&#34;</span>
+</span></span><span style=display:flex><span>      ],
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Resource&#34;</span>: <span style=color:#e6db74>&#34;arn:aws:logs:*:*:*&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Effect&#34;</span>: <span style=color:#e6db74>&#34;Allow&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Action&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;s3:GetObject&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;s3:PutObject&#34;</span>
+</span></span><span style=display:flex><span>      ],
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Resource&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;arn:aws:s3:::storm-frontend-hosting-duc-2025/*&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;arn:aws:s3:::storm-ai-models/*&#34;</span>
+</span></span><span style=display:flex><span>      ]
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  ]
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=monitoring--logs>Monitoring & Logs</h2><h3 id=cloudwatch-logs>CloudWatch Logs</h3><p><strong>Log Group</strong>: <code>/aws/lambda/storm-prediction</code></p><p><strong>Key Log Messages</strong>:</p><pre tabindex=0><code>Loading LSTM model...
+Downloaded LSTM from S3
+LSTM loaded successfully
+
+Loading TCN model...
+Checking: /var/task/models/cropping_storm_7304_2l.pth
+Found TCN at /var/task/models/cropping_storm_7304_2l.pth
+TCN loaded successfully
+
+Processing: Test Storm (TEST001)
+Input points: 9
+Predicted total distance: 500.50 km
+Generated 24 predictions (72 hours)
+Saved to S3: predictions/TEST001_1733486400.json
+</code></pre><p><strong>Screenshots needed:</strong></p><ul><li><input disabled type=checkbox> CloudWatch → Log groups → /aws/lambda/storm-prediction</li><li><input disabled type=checkbox> Log stream → Recent logs with emojis</li><li><input disabled type=checkbox> Logs → Duration, Memory used</li></ul><h3 id=metrics>Metrics</h3><p><strong>CloudWatch Metrics</strong>:</p><ul><li>Invocations</li><li>Duration (avg ~5-10 seconds)</li><li>Errors</li><li>Throttles</li><li>Memory used (~500-800 MB)</li></ul><p><strong>Screenshots needed:</strong></p><ul><li><input disabled type=checkbox> Lambda → Monitor → Metrics</li><li><input disabled type=checkbox> CloudWatch → Metrics → Lambda → Function metrics</li></ul><h2 id=common-issues--solutions>Common Issues & Solutions</h2><h3 id=1-unicodedecodeerror-utf-8-codec-cant-decode-byte-0x80>1. UnicodeDecodeError: &lsquo;utf-8&rsquo; codec can&rsquo;t decode byte 0x80</h3><p><strong>Symptom</strong>:</p><pre tabindex=0><code>UnicodeDecodeError: &#39;utf-8&#39; codec can&#39;t decode byte 0x80 in position 64
+</code></pre><p><strong>Cause</strong>: Model <code>.pth</code> file at root mistaken as Python config file</p><p><strong>Solution</strong>: Move model to subdirectory</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dockerfile data-lang=dockerfile><span style=display:flex><span><span style=color:#66d9ef>RUN</span> mkdir -p <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span>/models<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> cropping_storm_7304_2l.pth <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span>/models/<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><h3 id=2-502-bad-gateway>2. 502 Bad Gateway</h3><p><strong>Symptom</strong>: Frontend receives 502 error</p><p><strong>Causes</strong>:</p><ul><li>Lambda timeout (exceeds 120s)</li><li>Lambda crash (out of memory)</li><li>Model failed to load</li></ul><p><strong>Solutions</strong>:</p><ol><li>Check CloudWatch Logs</li><li>Increase memory if needed</li><li>Increase timeout if needed</li></ol><h3 id=3-lstm-fallback>3. LSTM Fallback</h3><p><strong>Symptom</strong>: Log shows &ldquo;⚠️ Using fallback distance&rdquo;</p><p><strong>Cause</strong>: LSTM model not on S3</p><p><strong>Solution</strong>: Upload <code>lstm_totald_256_4.pt</code> to S3:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>aws s3 cp lstm_totald_256_4.pt <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  s3://storm-frontend-hosting-duc-2025/models/
+</span></span></code></pre></div><h3 id=4-ecr-push-403-forbidden>4. ECR Push 403 Forbidden</h3><p><strong>Symptom</strong>: <code>403 Forbidden</code> when pushing image</p><p><strong>Causes</strong>:</p><ul><li>ECR login expired</li><li>Wrong account ID</li><li>Repository doesn&rsquo;t exist</li></ul><p><strong>Solutions</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Re-login</span>
+</span></span><span style=display:flex><span>aws ecr get-login-password --region ap-southeast-1 | <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  docker login --username AWS --password-stdin <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  339570693867.dkr.ecr.ap-southeast-1.amazonaws.com
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Create repository if needed</span>
+</span></span><span style=display:flex><span>aws ecr create-repository <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --repository-name storm-prediction <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --region ap-southeast-1
+</span></span></code></pre></div><h2 id=testing>Testing</h2><h3 id=local-test-if-possible>Local Test (if possible)</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#75715e># Run locally</span>
+</span></span><span style=display:flex><span>python app<span style=color:#f92672>.</span>py
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Test event</span>
+</span></span><span style=display:flex><span>test_event <span style=color:#f92672>=</span> {
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;history&#34;</span>: [
+</span></span><span style=display:flex><span>        {<span style=color:#e6db74>&#34;lat&#34;</span>: <span style=color:#ae81ff>15.0</span>, <span style=color:#e6db74>&#34;lng&#34;</span>: <span style=color:#ae81ff>120.0</span>},
+</span></span><span style=display:flex><span>        {<span style=color:#e6db74>&#34;lat&#34;</span>: <span style=color:#ae81ff>15.1</span>, <span style=color:#e6db74>&#34;lng&#34;</span>: <span style=color:#ae81ff>120.1</span>},
+</span></span><span style=display:flex><span>        <span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>    ],
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;storm_name&#34;</span>: <span style=color:#e6db74>&#34;Test Storm&#34;</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>result <span style=color:#f92672>=</span> handler(test_event, <span style=color:#66d9ef>None</span>)
+</span></span><span style=display:flex><span>print(result)
+</span></span></code></pre></div><h3 id=lambda-test>Lambda Test</h3><p><strong>AWS Console</strong>:</p><ol><li>Lambda → Test tab</li><li>Create test event:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;history&#34;</span>: [
+</span></span><span style=display:flex><span>    {<span style=color:#f92672>&#34;lat&#34;</span>: <span style=color:#ae81ff>15.0</span>, <span style=color:#f92672>&#34;lng&#34;</span>: <span style=color:#ae81ff>120.0</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#f92672>&#34;lat&#34;</span>: <span style=color:#ae81ff>15.1</span>, <span style=color:#f92672>&#34;lng&#34;</span>: <span style=color:#ae81ff>120.1</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#f92672>&#34;lat&#34;</span>: <span style=color:#ae81ff>15.2</span>, <span style=color:#f92672>&#34;lng&#34;</span>: <span style=color:#ae81ff>120.2</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#f92672>&#34;lat&#34;</span>: <span style=color:#ae81ff>15.3</span>, <span style=color:#f92672>&#34;lng&#34;</span>: <span style=color:#ae81ff>120.3</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#f92672>&#34;lat&#34;</span>: <span style=color:#ae81ff>15.4</span>, <span style=color:#f92672>&#34;lng&#34;</span>: <span style=color:#ae81ff>120.4</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#f92672>&#34;lat&#34;</span>: <span style=color:#ae81ff>15.5</span>, <span style=color:#f92672>&#34;lng&#34;</span>: <span style=color:#ae81ff>120.5</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#f92672>&#34;lat&#34;</span>: <span style=color:#ae81ff>15.6</span>, <span style=color:#f92672>&#34;lng&#34;</span>: <span style=color:#ae81ff>120.6</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#f92672>&#34;lat&#34;</span>: <span style=color:#ae81ff>15.7</span>, <span style=color:#f92672>&#34;lng&#34;</span>: <span style=color:#ae81ff>120.7</span>},
+</span></span><span style=display:flex><span>    {<span style=color:#f92672>&#34;lat&#34;</span>: <span style=color:#ae81ff>15.8</span>, <span style=color:#f92672>&#34;lng&#34;</span>: <span style=color:#ae81ff>120.8</span>}
+</span></span><span style=display:flex><span>  ],
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;storm_name&#34;</span>: <span style=color:#e6db74>&#34;Test Storm&#34;</span>
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><ol start=3><li>Click <strong>Test</strong></li><li>Check response</li></ol><h3 id=curl-test>cURL Test</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>curl -X POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  <span style=color:#e6db74>&#34;https://vill3povlzqxdyxm7ubldizobu0kdgbi.lambda-url.ap-southeast-1.on.aws/predict&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  -H <span style=color:#e6db74>&#34;Content-Type: application/json&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  -d <span style=color:#e6db74>&#39;{
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;history&#34;: [
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      {&#34;lat&#34;: 15.0, &#34;lng&#34;: 120.0},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      {&#34;lat&#34;: 15.1, &#34;lng&#34;: 120.1},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      {&#34;lat&#34;: 15.2, &#34;lng&#34;: 120.2},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      {&#34;lat&#34;: 15.3, &#34;lng&#34;: 120.3},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      {&#34;lat&#34;: 15.4, &#34;lng&#34;: 120.4},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      {&#34;lat&#34;: 15.5, &#34;lng&#34;: 120.5},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      {&#34;lat&#34;: 15.6, &#34;lng&#34;: 120.6},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      {&#34;lat&#34;: 15.7, &#34;lng&#34;: 120.7},
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>      {&#34;lat&#34;: 15.8, &#34;lng&#34;: 120.8}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    ],
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;storm_name&#34;: &#34;Test Storm&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  }&#39;</span>
+</span></span></code></pre></div><h2 id=deployment-checklist>Deployment Checklist</h2><ul><li>Model file <code>cropping_storm_7304_2l.pth</code> exists</li><li>(Optional) Upload LSTM model to S3</li><li>Build Docker image successfully</li><li>Tag image with correct account ID (339570693867)</li><li>Login to ECR successfully</li><li>Push image to ECR</li><li>Update Lambda function with new image</li><li>Check Lambda configuration (memory, timeout)</li><li>Test Lambda with test event</li><li>Test via Function URL with cURL</li><li>Test from frontend</li><li>Check CloudWatch Logs</li><li>Verify prediction results on map</li></ul><h2 id=screenshots>Screenshots</h2><h4 id=function>Function</h4><p align=center><img src=../../../images/5-Workshop/5.4-FB_END/5.4.2-Lambda/image-13.png alt="Picture 1"><br><strong style=font-size:18px>Figure 1</strong></p><h4 id=configuration>Configuration</h4><p align=center><img src=../../../images/5-Workshop/5.4-FB_END/5.4.2-Lambda/image-14.png alt="Picture 2"><br><strong style=font-size:18px>Figure 2</strong></p><h4 id=environment-variables-1>Environment Variables</h4><p align=center><img src=../../../images/5-Workshop/5.4-FB_END/5.4.2-Lambda/image-15.png alt="Picture 3"><br><strong style=font-size:18px>Figure 3</strong></p><h2 id=ecr>ECR</h2><h3 id=repository>Repository</h3><p align=center><img src=../../../images/5-Workshop/5.4-FB_END/5.4.2-Lambda/image-16.png alt="Picture 4"><br><strong style=font-size:18px>Figure 4</strong></p><p align=center><img src=../../../images/5-Workshop/5.4-FB_END/5.4.2-Lambda/image-17.png alt="Picture 5"><br><strong style=font-size:18px>Figure 5</strong></p><footer class=footline></footer></div></div><div id=navigation><a class="nav nav-prev" href=../../../5-workshop/5.4-frontback-end/5.4.1-frontend-architecture/ title="Frontend Architecture"><i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=../../../5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.1-ai-model-integration/ title=AI-Model-Integration style=margin-right:0><i class="fa fa-chevron-right"></i></a></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=../../../js/clipboard.min.js?1765248291></script><script src=../../../js/perfect-scrollbar.min.js?1765248291></script><script src=../../../js/perfect-scrollbar.jquery.min.js?1765248291></script><script src=../../../js/jquery.sticky.js?1765248291></script><script src=../../../js/featherlight.min.js?1765248291></script><script src=../../../js/highlight.pack.js?1765248291></script><script>hljs.initHighlightingOnLoad()</script><script src=../../../js/modernizr.custom-3.6.0.js?1765248291></script><script src=../../../js/learn.js?1765248291></script><script src=../../../js/hugo-learn.js?1765248291></script><link href=../../../mermaid/mermaid.css?1765248291 rel=stylesheet><script src=../../../mermaid/mermaid.js?1765248291></script><script>mermaid.initialize({startOnLoad:!0})</script><script>(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,(e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date),(i=t.createElement(n),a=t.getElementsByTagName(n)[0]),i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-158079754-2","auto"),ga("send","pageview")</script></body></html>

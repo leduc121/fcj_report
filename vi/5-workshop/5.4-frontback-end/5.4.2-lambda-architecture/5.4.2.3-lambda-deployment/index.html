@@ -1,0 +1,326 @@
+<!doctype html><html lang=vi class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.134.3"><meta name=description content><meta name=author content="thienlh@thienlu.com"><link rel=icon href=../../../../../images/favicon.png type=image/png><title>Triển Khai Lamda :: Báo cáo thực tập</title>
+<link href=../../../../../css/nucleus.css?1765248292 rel=stylesheet><link href=../../../../../css/fontawesome-all.min.css?1765248292 rel=stylesheet><link href=../../../../../css/hybrid.css?1765248292 rel=stylesheet><link href=../../../../../css/featherlight.min.css?1765248292 rel=stylesheet><link href=../../../../../css/perfect-scrollbar.min.css?1765248292 rel=stylesheet><link href=../../../../../css/auto-complete.css?1765248292 rel=stylesheet><link href=../../../../../css/atom-one-dark-reasonable.css?1765248292 rel=stylesheet><link href=../../../../../css/theme.css?1765248292 rel=stylesheet><link href=../../../../../css/hugo-theme.css?1765248292 rel=stylesheet><link href=../../../../../css/theme-workshop.css?1765248292 rel=stylesheet><script src=../../../../../js/jquery-3.3.1.min.js?1765248292></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style></head><body data-url=../../../../../vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/><nav id=sidebar class=showVisitedLinks><div id=header-wrapper><div id=header><a id=logo href=../../../../../><svg id="Layer_1" data-name="Layer 1" viewBox="0 0 60 30" width="30%"><defs><style>.cls-1{fill:#fff}.cls-2{fill:#f90;fill-rule:evenodd}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09 10.85a4.7 4.7.0 00.19 1.48 7.73 7.73.0 00.54 1.19.77.77.0 01.12.38.64.64.0 01-.32.49l-1 .7a.83.83.0 01-.44.15.69.69.0 01-.49-.23 3.8 3.8.0 01-.6-.77q-.25-.42-.51-1a6.14 6.14.0 01-4.89 2.3 4.54 4.54.0 01-3.32-1.19 4.27 4.27.0 01-1.22-3.2 4.28 4.28.0 011.46-3.4A6.06 6.06.0 017.69 6.46a12.47 12.47.0 011.76.13q.92.13 1.91.36V5.73a3.65 3.65.0 00-.79-2.66A3.81 3.81.0 007.86 2.3a7.71 7.71.0 00-1.79.22 12.78 12.78.0 00-1.79.57 4.55 4.55.0 01-.58.22h-.26q-.35.0-.35-.52V2a1.09 1.09.0 01.12-.58 1.2 1.2.0 01.47-.35A10.88 10.88.0 015.77.32 10.19 10.19.0 018.36.0a6 6 0 014.35 1.35 5.49 5.49.0 011.38 4.09zM7.34 13.38a5.36 5.36.0 001.72-.31A3.63 3.63.0 0010.63 12 2.62 2.62.0 0011.19 11a5.63 5.63.0 00.16-1.44v-.7a14.35 14.35.0 00-1.53-.28 12.37 12.37.0 00-1.56-.1 3.84 3.84.0 00-2.47.67A2.34 2.34.0 005 11a2.35 2.35.0 00.61 1.76A2.4 2.4.0 007.34 13.38zm13.35 1.8a1 1 0 01-.64-.16 1.3 1.3.0 01-.35-.65L15.81 1.51a3 3 0 01-.15-.67.36.36.0 01.41-.41H17.7a1 1 0 01.65.16 1.4 1.4.0 01.33.65l2.79 11 2.59-11A1.17 1.17.0 0124.39.6a1.1 1.1.0 01.67-.16H26.4a1.1 1.1.0 01.67.16 1.17 1.17.0 01.32.65L30 12.39 32.88 1.25A1.39 1.39.0 0133.22.6a1 1 0 01.65-.16h1.54a.36.36.0 01.41.41 1.36 1.36.0 010 .26 3.64 3.64.0 01-.12.41l-4 12.86a1.3 1.3.0 01-.35.65 1 1 0 01-.64.16H29.25a1 1 0 01-.67-.17 1.26 1.26.0 01-.32-.67L25.67 3.64l-2.56 10.7a1.26 1.26.0 01-.32.67 1 1 0 01-.67.17zm21.36.44a11.28 11.28.0 01-2.56-.29 7.44 7.44.0 01-1.92-.67 1 1 0 01-.61-.93v-.84q0-.52.38-.52a.9.9.0 01.31.06l.42.17a8.77 8.77.0 001.83.58 9.78 9.78.0 002 .2 4.48 4.48.0 002.43-.55 1.76 1.76.0 00.86-1.57 1.61 1.61.0 00-.45-1.16A4.29 4.29.0 0043 9.22l-2.41-.76A5.15 5.15.0 0138 6.78a3.94 3.94.0 01-.83-2.41 3.7 3.7.0 01.45-1.85 4.47 4.47.0 011.19-1.37 5.27 5.27.0 011.7-.86A7.4 7.4.0 0142.6.0a8.87 8.87.0 011.12.07q.57.07 1.08.19t.95.26a4.27 4.27.0 01.7.29 1.59 1.59.0 01.49.41.94.94.0 01.15.55v.79q0 .52-.38.52a1.76 1.76.0 01-.64-.2 7.74 7.74.0 00-3.2-.64 4.37 4.37.0 00-2.21.47 1.6 1.6.0 00-.79 1.48 1.58 1.58.0 00.49 1.18 4.94 4.94.0 001.83.92L44.55 7a5.08 5.08.0 012.57 1.6A3.76 3.76.0 0147.9 11a4.21 4.21.0 01-.44 1.93 4.4 4.4.0 01-1.21 1.47 5.43 5.43.0 01-1.85.93A8.25 8.25.0 0142.05 15.62z"/><path class="cls-2" d="M45.19 23.81C39.72 27.85 31.78 30 25 30A36.64 36.64.0 01.22 20.57c-.51-.46-.06-1.09.56-.74A49.78 49.78.0 0025.53 26.4 49.23 49.23.0 0044.4 22.53C45.32 22.14 46.1 23.14 45.19 23.81z"/><path class="cls-2" d="M47.47 21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74 3.13-2.2 8.27-1.57 8.86-.83s-.16 5.89-3.09 8.35c-.45.38-.88.18-.68-.32C46.69 25.8 48.17 22.11 47.47 21.21z"/></svg></a></div><div class=searchbox><label for=search-by><i class="fas fa-search"></i></label>
+<input data-search-input id=search-by type=search placeholder=Search...>
+<span data-search-clear><i class="fas fa-times"></i></span></div><script type=text/javascript src=../../../../../js/lunr.min.js?1765248292></script><script type=text/javascript src=../../../../../js/auto-complete.js?1765248292></script><script type=text/javascript>var baseurl="https://github.com/leduc121/fcj_report//vi"</script><script type=text/javascript src=../../../../../js/search.js?1765248292></script></div><div class=highlightable><ul class=topics><li data-nav-id=/vi/1-worklog/ title="Nhật ký công việc" class=dd-item><a href=../../../../../vi/1-worklog/><b>1. </b>Nhật ký công việc
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/1-worklog/1.1-week1/ title="Worklog Tuần 1" class=dd-item><a href=../../../../../vi/1-worklog/1.1-week1/><b>1.1. </b>Worklog Tuần 1
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.2-week2/ title="Worklog Tuần 2" class=dd-item><a href=../../../../../vi/1-worklog/1.2-week2/><b>1.2. </b>Worklog Tuần 2
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.3-week3/ title="Worklog Tuần 3" class=dd-item><a href=../../../../../vi/1-worklog/1.3-week3/><b>1.3. </b>Worklog Tuần 3
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.4-week4/ title="Worklog Tuần 4" class=dd-item><a href=../../../../../vi/1-worklog/1.4-week4/><b>1.4. </b>Worklog Tuần 4
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.5-week5/ title="Worklog Tuần 5" class=dd-item><a href=../../../../../vi/1-worklog/1.5-week5/><b>1.5. </b>Worklog Tuần 5
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.6-week6/ title="Worklog Tuần 6" class=dd-item><a href=../../../../../vi/1-worklog/1.6-week6/><b>1.6. </b>Worklog Tuần 6
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.7-week7/ title="Worklog Tuần 7" class=dd-item><a href=../../../../../vi/1-worklog/1.7-week7/><b>1.7. </b>Worklog Tuần 7
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.8-week8/ title="Worklog Tuần 8" class=dd-item><a href=../../../../../vi/1-worklog/1.8-week8/><b>1.8. </b>Worklog Tuần 8
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.9-week9/ title="Worklog Tuần 9" class=dd-item><a href=../../../../../vi/1-worklog/1.9-week9/><b>1.9. </b>Worklog Tuần 9
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.10-week10/ title="Worklog Tuần 10" class=dd-item><a href=../../../../../vi/1-worklog/1.10-week10/><b>1.10. </b>Worklog Tuần 10
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.11-week11/ title="Worklog Tuần 11" class=dd-item><a href=../../../../../vi/1-worklog/1.11-week11/><b>1.11. </b>Worklog Tuần 11
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/1-worklog/1.12-week12/ title="Worklog Tuần 12" class=dd-item><a href=../../../../../vi/1-worklog/1.12-week12/><b>1.12. </b>Worklog Tuần 12
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/2-proposal/ title="Bản đề xuất" class=dd-item><a href=../../../../../vi/2-proposal/><b>2. </b>Bản đề xuất
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogstranslated/ title="Các bài blogs đã dịch" class=dd-item><a href=../../../../../vi/3-blogstranslated/><b>3. </b>Các bài blogs đã dịch
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/3-blogstranslated/3.1-blog1/ title="Blog 1" class=dd-item><a href=../../../../../vi/3-blogstranslated/3.1-blog1/><b>3.1. </b>Blog 1
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogstranslated/3.2-blog2/ title="Blog 2" class=dd-item><a href=../../../../../vi/3-blogstranslated/3.2-blog2/><b>3.2. </b>Blog 2
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/3-blogstranslated/3.3-blog3/ title="Blog 3" class=dd-item><a href=../../../../../vi/3-blogstranslated/3.3-blog3/><b>3.3. </b>Blog 3
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/4-eventparticipated/ title="Các events đã tham gia" class=dd-item><a href=../../../../../vi/4-eventparticipated/><b>4. </b>Các events đã tham gia
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/4-eventparticipated/4.1-event1/ title="AWS CLOUD DAY" class=dd-item><a href=../../../../../vi/4-eventparticipated/4.1-event1/><b>4.1. </b>AWS CLOUD DAY
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/4-eventparticipated/4.2-event2/ title="Cloud Mastery 1" class=dd-item><a href=../../../../../vi/4-eventparticipated/4.2-event2/><b>4.2. </b>Cloud Mastery 1
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/4-eventparticipated/4.3-event3/ title="AWS Cloud Mastery Series #2" class=dd-item><a href=../../../../../vi/4-eventparticipated/4.3-event3/><b>4.3. </b>AWS Cloud Mastery Series #2
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/4-eventparticipated/4.4-event4/ title="AWS Cloud Mastery Series #1" class=dd-item><a href=../../../../../vi/4-eventparticipated/4.4-event4/><b>4.4. </b>AWS Cloud Mastery Series #1
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/ title=Workshop class="dd-item
+parent"><a href=../../../../../vi/5-workshop/><b>5. </b>Workshop
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.1-workshop-overview/ title="Giới thiệu" class=dd-item><a href=../../../../../vi/5-workshop/5.1-workshop-overview/><b>5.1. </b>Giới thiệu
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.2-data-preparation/ title="Chuẩn Bị Dữ Liệu" class=dd-item><a href=../../../../../vi/5-workshop/5.2-data-preparation/><b>5.2. </b>Chuẩn Bị Dữ Liệu
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.3-ml-model/ title="Mô Hình Học Máy" class=dd-item><a href=../../../../../vi/5-workshop/5.3-ml-model/><b>5.3. </b>Mô Hình Học Máy
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.4-frontback-end/5.4.1-frontend-architecture/ title="Kiến Trúc Frontend" class=dd-item><a href=../../../../../vi/5-workshop/5.4-frontback-end/5.4.1-frontend-architecture/><b>5.4.1 </b>Kiến Trúc Frontend
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/ title="Kiến trúc Lambda" class="dd-item
+parent"><a href=../../../../../vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/><b>5.4.2 </b>Kiến trúc Lambda
+<i class="fas fa-check read-icon"></i></a><ul><li data-nav-id=/vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.2-fix-unicode-error-solution/ title="Sửa lỗi Unicode" class=dd-item><a href=../../../../../vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.2-fix-unicode-error-solution/><b>5.4.2.2 </b>Sửa lỗi Unicode
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.1-ai-model-integration/ title="Tích Hợp AI" class=dd-item><a href=../../../../../vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.1-ai-model-integration/><b>5.4.2.1 </b>Tích Hợp AI
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/ title="Triển Khai Lamda" class="dd-item
+active"><a href=../../../../../vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/><b>5.4.2.3 </b>Triển Khai Lamda
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/5-workshop/5.5-platform-api/ title="Nền tảng API" class=dd-item><a href=../../../../../vi/5-workshop/5.5-platform-api/><b>5.5. </b>Nền tảng API
+<i class="fas fa-check read-icon"></i></a></li></ul></li><li data-nav-id=/vi/6-self-evaluation/ title="Tự đánh giá" class=dd-item><a href=../../../../../vi/6-self-evaluation/><b>6. </b>Tự đánh giá
+<i class="fas fa-check read-icon"></i></a></li><li data-nav-id=/vi/7-feedback/ title="Chia sẻ, đóng góp ý kiến" class=dd-item><a href=../../../../../vi/7-feedback/><b>7. </b>Chia sẻ, đóng góp ý kiến
+<i class="fas fa-check read-icon"></i></a></li></ul><section id=shortcuts><h3>More</h3><ul><li><a class=padding href=https://www.facebook.com/groups/awsstudygroupfcj/><i class='fab fa-facebook'></i> AWS Study Group</a></li></ul></section><section id=prefooter><hr><ul><li><a class=padding><i class="fas fa-language fa-fw"></i><div class=select-style><select id=select-language onchange="location=this.value"><option id=en value=https://github.com/leduc121/fcj_report/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/>English</option><option id=vi value=https://github.com/leduc121/fcj_report/vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.3-lambda-deployment/ selected>Tiếng Việt</option></select><svg id="Capa_1" xmlns:xlink="http://www.w3.org/1999/xlink" width="255" height="255" viewBox="0 0 255 255" style="enable-background:new 0 0 255 255"><g><g id="arrow-drop-down"><polygon points="0,63.75 127.5,191.25 255,63.75"/></g></g></svg></div></a></li><li><a class=padding href=# data-clear-history-toggle><i class="fas fa-history fa-fw"></i> Clear History</a></li></ul></section><section id=footer><left><b>Workshop</b><br><img src="https://hitwebcounter.com/counter/counter.php?page=7920860&style=0038&nbdigits=9&type=page&initCount=0" title=Migrate alt="web counter" border=0></a><br><b><a href=https://cloudjourney.awsstudygroup.com/>Cloud Journey</a></b><br><img src="https://hitwebcounter.com/counter/counter.php?page=7830807&style=0038&nbdigits=9&type=page&initCount=0" title="Total CLoud Journey" alt="web counter" border=0>
+</left><left><br><br><b>Last Updated</b><br><i><span id=lastUpdated style=color:orange></span>
+</i><script>const today=new Date,formattedDate=today.toLocaleDateString("en-GB");document.getElementById("lastUpdated").textContent=formattedDate</script></left><left><br><br><b>Team</b><br><i><a href=https://www.facebook.com/groups/660548818043427 style=color:orange>First Cloud Journey</a><br></i></left><script async defer src=https://buttons.github.io/buttons.js></script></section></div></nav><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i>
+</a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span>
+<span class=links><a href=../../../../../vi/>Báo cáo thực tập</a> > <a href=../../../../../vi/5-workshop/>Workshop</a> > <a href=../../../../../vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/>Kiến trúc Lambda</a> > Triển Khai Lamda</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><ul><li><a href=#chuẩn-bị-code>Chuẩn bị Code</a></li><li><a href=#bước-2-build-docker-image>Bước 2: Build Docker Image</a></li><li><a href=#bước-3-upload-lên-aws-ecr>Bước 3: Upload lên AWS ECR</a></li><li><a href=#bước-4-tạo-lambda-function>Bước 4: Tạo Lambda Function</a></li><li><a href=#bước-5-tạo-api-gateway>Bước 5: Tạo API Gateway</a></li><li><a href=#bước-6-cập-nhật-frontend>Bước 6: Cập nhật Frontend</a></li></ul></li><li><a href=#tối-ưu-hóa>Tối ưu hóa</a><ul><li><a href=#1-giảm-cold-start>1. Giảm Cold Start</a></li><li><a href=#2-giảm-kích-thước-image>2. Giảm kích thước Image</a></li><li><a href=#3-cache-model-trong-tmp>3. Cache Model trong /tmp</a></li></ul></li><li><a href=#monitoring>Monitoring</a><ul><li><a href=#cloudwatch-logs>CloudWatch Logs</a></li><li><a href=#cloudwatch-metrics>CloudWatch Metrics</a></li><li><a href=#alerts>Alerts</a></li></ul></li><li><a href=#troubleshooting>Troubleshooting</a><ul><li><a href=#lỗi-task-timed-out-after-300-seconds>Lỗi: &ldquo;Task timed out after 3.00 seconds&rdquo;</a></li><li><a href=#lỗi-runtime-exited-with-error-signal-killed>Lỗi: &ldquo;Runtime exited with error: signal: killed&rdquo;</a></li><li><a href=#lỗi-no-module-named-torch>Lỗi: &ldquo;No module named &rsquo;torch'&rdquo;</a></li><li><a href=#lỗi-model-không-load-được>Lỗi: Model không load được</a></li></ul></li><li><a href=#chi-phí-ước-tính>Chi phí ước tính</a></li><li><a href=#checklist-cuối-cùng>Checklist cuối cùng</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Triển Khai Lamda</h1><h1 id=các-bước-deploy-pytorch-model-dự-đoán-bão-lên-aws-lambda>Các bước Deploy PyTorch Model dự đoán bão lên AWS Lambda</h1><p>Việc triển khai Lambda là một phần quan trọng trong quy trình phát triển website của nhóm. Mục sau đây sẽ giải thích các bước chúng em đã thực hiện để hoàn thành quy trình này.</p><h3 id=chuẩn-bị-code>Chuẩn bị Code</h3><p><strong>1.1. Sửa app.py</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> json
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> torch
+</span></span><span style=display:flex><span><span style=color:#f92672>import</span> numpy <span style=color:#66d9ef>as</span> np
+</span></span><span style=display:flex><span><span style=color:#f92672>from</span> typing <span style=color:#f92672>import</span> List, Dict
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Load model khi Lambda khởi động (reuse across invocations)</span>
+</span></span><span style=display:flex><span>MODEL_PATH <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;model.pth&#34;</span>
+</span></span><span style=display:flex><span>device <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>device(<span style=color:#e6db74>&#34;cpu&#34;</span>)  <span style=color:#75715e># Lambda không có GPU</span>
+</span></span><span style=display:flex><span>model <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>load_model</span>():
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>global</span> model
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> model <span style=color:#f92672>is</span> <span style=color:#66d9ef>None</span>:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Loading model from </span><span style=color:#e6db74>{</span>MODEL_PATH<span style=color:#e6db74>}</span><span style=color:#e6db74>...&#34;</span>)
+</span></span><span style=display:flex><span>        model <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>load(MODEL_PATH, map_location<span style=color:#f92672>=</span>device)
+</span></span><span style=display:flex><span>        model<span style=color:#f92672>.</span>eval()
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;Model loaded successfully!&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> model
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>prepare_features</span>(history: List[Dict]) <span style=color:#f92672>-&gt;</span> torch<span style=color:#f92672>.</span>Tensor:
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Chuyển đổi history thành tensor cho model
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    history: [{&#34;lat&#34;: 15.0, &#34;lng&#34;: 107.0}, ...]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># TODO: Implement feature engineering theo model của bạn</span>
+</span></span><span style=display:flex><span>    lats <span style=color:#f92672>=</span> [p[<span style=color:#e6db74>&#34;lat&#34;</span>] <span style=color:#66d9ef>for</span> p <span style=color:#f92672>in</span> history]
+</span></span><span style=display:flex><span>    lngs <span style=color:#f92672>=</span> [p[<span style=color:#e6db74>&#34;lng&#34;</span>] <span style=color:#66d9ef>for</span> p <span style=color:#f92672>in</span> history]
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Ví dụ: normalize và reshape</span>
+</span></span><span style=display:flex><span>    features <span style=color:#f92672>=</span> np<span style=color:#f92672>.</span>array([lats <span style=color:#f92672>+</span> lngs])  <span style=color:#75715e># Shape: (1, 18)</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> torch<span style=color:#f92672>.</span>tensor(features, dtype<span style=color:#f92672>=</span>torch<span style=color:#f92672>.</span>float32)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>format_predictions</span>(predictions: torch<span style=color:#f92672>.</span>Tensor, storm_name: str) <span style=color:#f92672>-&gt;</span> Dict:
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Format output theo cấu trúc frontend cần
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># TODO: Implement theo output của model</span>
+</span></span><span style=display:flex><span>    pred_array <span style=color:#f92672>=</span> predictions<span style=color:#f92672>.</span>detach()<span style=color:#f92672>.</span>cpu()<span style=color:#f92672>.</span>numpy()[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Giả sử model predict 10 điểm tiếp theo (lat, lng)</span>
+</span></span><span style=display:flex><span>    forecast <span style=color:#f92672>=</span> []
+</span></span><span style=display:flex><span>    base_timestamp <span style=color:#f92672>=</span> int(time<span style=color:#f92672>.</span>time() <span style=color:#f92672>*</span> <span style=color:#ae81ff>1000</span>)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>0</span>, len(pred_array), <span style=color:#ae81ff>2</span>):
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> i <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>&lt;</span> len(pred_array):
+</span></span><span style=display:flex><span>            forecast<span style=color:#f92672>.</span>append({
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;lat&#34;</span>: float(pred_array[i]),
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;lng&#34;</span>: float(pred_array[i <span style=color:#f92672>+</span> <span style=color:#ae81ff>1</span>]),
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;timestamp&#34;</span>: base_timestamp <span style=color:#f92672>+</span> (i <span style=color:#f92672>//</span> <span style=color:#ae81ff>2</span>) <span style=color:#f92672>*</span> <span style=color:#ae81ff>3600000</span>,  <span style=color:#75715e># +1 hour each</span>
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;windSpeed&#34;</span>: <span style=color:#ae81ff>120.0</span>,  <span style=color:#75715e># TODO: Predict từ model</span>
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;pressure&#34;</span>: <span style=color:#ae81ff>980.0</span>,   <span style=color:#75715e># TODO: Predict từ model</span>
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;category&#34;</span>: <span style=color:#e6db74>&#34;Category 3&#34;</span>,  <span style=color:#75715e># TODO: Classify từ windSpeed</span>
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#34;confidence&#34;</span>: <span style=color:#ae81ff>0.85</span>
+</span></span><span style=display:flex><span>            })
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;storm_name&#34;</span>: storm_name,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;forecast&#34;</span>: forecast
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>handler</span>(event, context):
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Lambda handler function
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Parse input</span>
+</span></span><span style=display:flex><span>        body <span style=color:#f92672>=</span> json<span style=color:#f92672>.</span>loads(event<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;body&#39;</span>, <span style=color:#e6db74>&#39;</span><span style=color:#e6db74>{}</span><span style=color:#e6db74>&#39;</span>))
+</span></span><span style=display:flex><span>        history <span style=color:#f92672>=</span> body<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;history&#39;</span>, [])
+</span></span><span style=display:flex><span>        storm_name <span style=color:#f92672>=</span> body<span style=color:#f92672>.</span>get(<span style=color:#e6db74>&#39;storm_name&#39;</span>, <span style=color:#e6db74>&#39;Unknown Storm&#39;</span>)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Validate input</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> len(history) <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>9</span>:
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;statusCode&#39;</span>: <span style=color:#ae81ff>400</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;headers&#39;</span>: {
+</span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#39;Content-Type&#39;</span>: <span style=color:#e6db74>&#39;application/json&#39;</span>,
+</span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#39;Access-Control-Allow-Origin&#39;</span>: <span style=color:#e6db74>&#39;*&#39;</span>
+</span></span><span style=display:flex><span>                },
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;body&#39;</span>: json<span style=color:#f92672>.</span>dumps({
+</span></span><span style=display:flex><span>                    <span style=color:#e6db74>&#39;error&#39;</span>: <span style=color:#e6db74>f</span><span style=color:#e6db74>&#39;Need at least 9 positions, got </span><span style=color:#e6db74>{</span>len(history)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#39;</span>
+</span></span><span style=display:flex><span>                })
+</span></span><span style=display:flex><span>            }
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Load model</span>
+</span></span><span style=display:flex><span>        model <span style=color:#f92672>=</span> load_model()
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Prepare features</span>
+</span></span><span style=display:flex><span>        X <span style=color:#f92672>=</span> prepare_features(history)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Predict</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>with</span> torch<span style=color:#f92672>.</span>no_grad():
+</span></span><span style=display:flex><span>            predictions <span style=color:#f92672>=</span> model(X)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Format output</span>
+</span></span><span style=display:flex><span>        result <span style=color:#f92672>=</span> format_predictions(predictions, storm_name)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;statusCode&#39;</span>: <span style=color:#ae81ff>200</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;headers&#39;</span>: {
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;Content-Type&#39;</span>: <span style=color:#e6db74>&#39;application/json&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;Access-Control-Allow-Origin&#39;</span>: <span style=color:#e6db74>&#39;*&#39;</span>
+</span></span><span style=display:flex><span>            },
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;body&#39;</span>: json<span style=color:#f92672>.</span>dumps(result)
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>Exception</span> <span style=color:#66d9ef>as</span> e:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Error: </span><span style=color:#e6db74>{</span>str(e)<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> {
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;statusCode&#39;</span>: <span style=color:#ae81ff>500</span>,
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;headers&#39;</span>: {
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;Content-Type&#39;</span>: <span style=color:#e6db74>&#39;application/json&#39;</span>,
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;Access-Control-Allow-Origin&#39;</span>: <span style=color:#e6db74>&#39;*&#39;</span>
+</span></span><span style=display:flex><span>            },
+</span></span><span style=display:flex><span>            <span style=color:#e6db74>&#39;body&#39;</span>: json<span style=color:#f92672>.</span>dumps({
+</span></span><span style=display:flex><span>                <span style=color:#e6db74>&#39;error&#39;</span>: str(e)
+</span></span><span style=display:flex><span>            })
+</span></span><span style=display:flex><span>        }
+</span></span></code></pre></div><p><strong>1.2. Sửa Dockerfile</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dockerfile data-lang=dockerfile><span style=display:flex><span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> public.ecr.aws/lambda/python:3.11</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Copy requirements và install</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> requirements.txt <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> pip install --no-cache-dir -r requirements.txt<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Copy model (đổi tên thành model.pth)</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> cropping_storm_7304_2l.pth <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span>/model.pth<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Copy code</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> app.py <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Set handler</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>CMD</span> [<span style=color:#e6db74>&#34;app.handler&#34;</span>]<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><p><strong>1.3. Kiểm tra requirements.txt</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span>torch==2.1.0
+</span></span><span style=display:flex><span>numpy==1.24.3
+</span></span></code></pre></div><h3 id=bước-2-build-docker-image>Bước 2: Build Docker Image</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cd storm_prediction
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Build image</span>
+</span></span><span style=display:flex><span>docker build -t storm-prediction-model .
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Test local (optional)</span>
+</span></span><span style=display:flex><span>docker run -p 9000:8080 storm-prediction-model
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Test với curl</span>
+</span></span><span style=display:flex><span>curl -X POST <span style=color:#e6db74>&#34;http://localhost:9000/2015-03-31/functions/function/invocations&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  -d <span style=color:#e6db74>&#39;{
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;body&#34;: &#34;{\&#34;history\&#34;: [{\&#34;lat\&#34;: 15.0, \&#34;lng\&#34;: 107.0}, {\&#34;lat\&#34;: 15.1, \&#34;lng\&#34;: 107.1}, {\&#34;lat\&#34;: 15.2, \&#34;lng\&#34;: 107.2}, {\&#34;lat\&#34;: 15.3, \&#34;lng\&#34;: 107.3}, {\&#34;lat\&#34;: 15.4, \&#34;lng\&#34;: 107.4}, {\&#34;lat\&#34;: 15.5, \&#34;lng\&#34;: 107.5}, {\&#34;lat\&#34;: 15.6, \&#34;lng\&#34;: 107.6}, {\&#34;lat\&#34;: 15.7, \&#34;lng\&#34;: 107.7}, {\&#34;lat\&#34;: 15.8, \&#34;lng\&#34;: 107.8}], \&#34;storm_name\&#34;: \&#34;Test Storm\&#34;}&#34;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>  }&#39;</span>
+</span></span></code></pre></div><h3 id=bước-3-upload-lên-aws-ecr>Bước 3: Upload lên AWS ECR</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 1. Tạo ECR repository</span>
+</span></span><span style=display:flex><span>aws ecr create-repository <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --repository-name storm-prediction-model <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --region ap-southeast-1
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 2. Đăng nhập Docker vào ECR</span>
+</span></span><span style=display:flex><span>aws ecr get-login-password --region ap-southeast-1 | <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  docker login --username AWS --password-stdin <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  &lt;account-id&gt;.dkr.ecr.ap-southeast-1.amazonaws.com
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 3. Tag image</span>
+</span></span><span style=display:flex><span>docker tag storm-prediction-model:latest <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  &lt;account-id&gt;.dkr.ecr.ap-southeast-1.amazonaws.com/storm-prediction-model:latest
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 4. Push image</span>
+</span></span><span style=display:flex><span>docker push &lt;account-id&gt;.dkr.ecr.ap-southeast-1.amazonaws.com/storm-prediction-model:latest
+</span></span></code></pre></div><p><strong>Lưu ý</strong>: Thay <code>&lt;account-id></code> bằng AWS Account ID của bạn.</p><h3 id=bước-4-tạo-lambda-function>Bước 4: Tạo Lambda Function</h3><p><strong>4.1. Tạo Lambda từ Console</strong></p><ol><li>Vào AWS Lambda Console</li><li>Click &ldquo;Create function&rdquo;</li><li>Chọn &ldquo;Container image&rdquo;</li><li>Function name: <code>storm-prediction</code></li><li>Container image URI: Chọn image vừa push lên ECR</li><li>Architecture: x86_64</li><li>Click &ldquo;Create function&rdquo;</li></ol><p><strong>4.2. Cấu hình Lambda</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Hoặc dùng AWS CLI</span>
+</span></span><span style=display:flex><span>aws lambda create-function <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --function-name storm-prediction <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --package-type Image <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --code ImageUri<span style=color:#f92672>=</span>&lt;account-id&gt;.dkr.ecr.ap-southeast-1.amazonaws.com/storm-prediction-model:latest <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --role arn:aws:iam::&lt;account-id&gt;:role/lambda-execution-role <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --timeout <span style=color:#ae81ff>60</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --memory-size <span style=color:#ae81ff>3008</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --region ap-southeast-1
+</span></span></code></pre></div><p><strong>Cấu hình quan trọng</strong>:</p><ul><li><strong>Memory</strong>: 3008 MB (PyTorch model cần nhiều RAM)</li><li><strong>Timeout</strong>: 60 seconds (model inference có thể mất 10-30s)</li><li><strong>Ephemeral storage</strong>: 512 MB (default, tăng nếu cần)</li></ul><p><strong>4.3. Tạo IAM Role</strong></p><p>Lambda cần role với permissions:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;Version&#34;</span>: <span style=color:#e6db74>&#34;2012-10-17&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=color:#f92672>&#34;Statement&#34;</span>: [
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Effect&#34;</span>: <span style=color:#e6db74>&#34;Allow&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Action&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;logs:CreateLogGroup&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;logs:CreateLogStream&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;logs:PutLogEvents&#34;</span>
+</span></span><span style=display:flex><span>      ],
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Resource&#34;</span>: <span style=color:#e6db74>&#34;arn:aws:logs:*:*:*&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Effect&#34;</span>: <span style=color:#e6db74>&#34;Allow&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Action&#34;</span>: [
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;ecr:GetDownloadUrlForLayer&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#e6db74>&#34;ecr:BatchGetImage&#34;</span>
+</span></span><span style=display:flex><span>      ],
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;Resource&#34;</span>: <span style=color:#e6db74>&#34;*&#34;</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  ]
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h3 id=bước-5-tạo-api-gateway>Bước 5: Tạo API Gateway</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 1. Tạo REST API</span>
+</span></span><span style=display:flex><span>aws apigateway create-rest-api <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --name storm-prediction-api <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --region ap-southeast-1
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 2. Lấy API ID và Root Resource ID</span>
+</span></span><span style=display:flex><span>API_ID<span style=color:#f92672>=</span>&lt;your-api-id&gt;
+</span></span><span style=display:flex><span>ROOT_ID<span style=color:#f92672>=</span>&lt;your-root-resource-id&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 3. Tạo resource /predict</span>
+</span></span><span style=display:flex><span>aws apigateway create-resource <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --rest-api-id $API_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --parent-id $ROOT_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --path-part predict
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 4. Tạo POST method</span>
+</span></span><span style=display:flex><span>RESOURCE_ID<span style=color:#f92672>=</span>&lt;predict-resource-id&gt;
+</span></span><span style=display:flex><span>aws apigateway put-method <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --rest-api-id $API_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --resource-id $RESOURCE_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --http-method POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --authorization-type NONE
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 5. Integrate với Lambda</span>
+</span></span><span style=display:flex><span>aws apigateway put-integration <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --rest-api-id $API_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --resource-id $RESOURCE_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --http-method POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --type AWS_PROXY <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --integration-http-method POST <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --uri arn:aws:apigateway:ap-southeast-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-southeast-1:&lt;account-id&gt;:function:storm-prediction/invocations
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 6. Deploy API</span>
+</span></span><span style=display:flex><span>aws apigateway create-deployment <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --rest-api-id $API_ID <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --stage-name prod
+</span></span></code></pre></div><p><strong>API URL</strong>: <code>https://&lt;api-id>.execute-api.ap-southeast-1.amazonaws.com/prod/predict</code></p><h3 id=bước-6-cập-nhật-frontend>Bước 6: Cập nhật Frontend</h3><p><strong>6.1. Cập nhật <code>.env.production</code></strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-env data-lang=env><span style=display:flex><span>VITE_PREDICTION_API_URL<span style=color:#f92672>=</span>https://&lt;api-id&gt;.execute-api.ap-southeast-1.amazonaws.com/prod
+</span></span></code></pre></div><p><strong>6.2. Build và deploy frontend</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cd frontend
+</span></span><span style=display:flex><span>npm run build
+</span></span><span style=display:flex><span><span style=color:#75715e># Deploy dist/ lên S3/CloudFront</span>
+</span></span></code></pre></div><h2 id=tối-ưu-hóa>Tối ưu hóa</h2><h3 id=1-giảm-cold-start>1. Giảm Cold Start</h3><p><strong>Provisioned Concurrency</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>aws lambda put-provisioned-concurrency-config <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --function-name storm-prediction <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --provisioned-concurrent-executions <span style=color:#ae81ff>1</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --qualifier $LATEST
+</span></span></code></pre></div><h3 id=2-giảm-kích-thước-image>2. Giảm kích thước Image</h3><p><strong>Dùng PyTorch CPU-only</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-txt data-lang=txt><span style=display:flex><span># requirements.txt
+</span></span><span style=display:flex><span>torch==2.1.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+</span></span><span style=display:flex><span>numpy==1.24.3
+</span></span></code></pre></div><p><strong>Multi-stage build</strong>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-dockerfile data-lang=dockerfile><span style=display:flex><span><span style=color:#75715e># Stage 1: Build</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> python:3.11-slim as builder</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> requirements.txt .<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>RUN</span> pip install --target /packages -r requirements.txt<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#75715e># Stage 2: Runtime</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>FROM</span><span style=color:#e6db74> public.ecr.aws/lambda/python:3.11</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> --from<span style=color:#f92672>=</span>builder /packages <span style=color:#e6db74>${</span>LAMBDA_RUNTIME_DIR<span style=color:#e6db74>}</span><span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> model.pth <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span>/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>COPY</span> app.py <span style=color:#e6db74>${</span>LAMBDA_TASK_ROOT<span style=color:#e6db74>}</span>/<span style=color:#960050;background-color:#1e0010>
+</span></span></span><span style=display:flex><span><span style=color:#960050;background-color:#1e0010></span><span style=color:#66d9ef>CMD</span> [<span style=color:#e6db74>&#34;app.handler&#34;</span>]<span style=color:#960050;background-color:#1e0010>
+</span></span></span></code></pre></div><h3 id=3-cache-model-trong-tmp>3. Cache Model trong /tmp</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> os
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>MODEL_PATH <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;/tmp/model.pth&#34;</span> <span style=color:#66d9ef>if</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>exists(<span style=color:#e6db74>&#34;/tmp/model.pth&#34;</span>) <span style=color:#66d9ef>else</span> <span style=color:#e6db74>&#34;model.pth&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>load_model</span>():
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>global</span> model
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> model <span style=color:#f92672>is</span> <span style=color:#66d9ef>None</span>:
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Copy to /tmp for faster access</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>exists(<span style=color:#e6db74>&#34;/tmp/model.pth&#34;</span>):
+</span></span><span style=display:flex><span>            <span style=color:#f92672>import</span> shutil
+</span></span><span style=display:flex><span>            shutil<span style=color:#f92672>.</span>copy(<span style=color:#e6db74>&#34;model.pth&#34;</span>, <span style=color:#e6db74>&#34;/tmp/model.pth&#34;</span>)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>        model <span style=color:#f92672>=</span> torch<span style=color:#f92672>.</span>load(<span style=color:#e6db74>&#34;/tmp/model.pth&#34;</span>, map_location<span style=color:#f92672>=</span>device)
+</span></span><span style=display:flex><span>        model<span style=color:#f92672>.</span>eval()
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> model
+</span></span></code></pre></div><h2 id=monitoring>Monitoring</h2><h3 id=cloudwatch-logs>CloudWatch Logs</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Xem logs</span>
+</span></span><span style=display:flex><span>aws logs tail /aws/lambda/storm-prediction --follow
+</span></span></code></pre></div><h3 id=cloudwatch-metrics>CloudWatch Metrics</h3><ul><li><strong>Invocations</strong>: Số lần gọi</li><li><strong>Duration</strong>: Thời gian chạy</li><li><strong>Errors</strong>: Số lỗi</li><li><strong>Throttles</strong>: Số lần bị throttle</li></ul><h3 id=alerts>Alerts</h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Tạo alarm cho errors</span>
+</span></span><span style=display:flex><span>aws cloudwatch put-metric-alarm <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --alarm-name storm-prediction-errors <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --alarm-description <span style=color:#e6db74>&#34;Alert when Lambda has errors&#34;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --metric-name Errors <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --namespace AWS/Lambda <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --statistic Sum <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --period <span style=color:#ae81ff>300</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --threshold <span style=color:#ae81ff>5</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --comparison-operator GreaterThanThreshold <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>  --dimensions Name<span style=color:#f92672>=</span>FunctionName,Value<span style=color:#f92672>=</span>storm-prediction
+</span></span></code></pre></div><h2 id=troubleshooting>Troubleshooting</h2><h3 id=lỗi-task-timed-out-after-300-seconds>Lỗi: &ldquo;Task timed out after 3.00 seconds&rdquo;</h3><p><strong>Giải pháp</strong>: Tăng timeout lên 60s</p><h3 id=lỗi-runtime-exited-with-error-signal-killed>Lỗi: &ldquo;Runtime exited with error: signal: killed&rdquo;</h3><p><strong>Giải pháp</strong>: Tăng memory lên 3008 MB</p><h3 id=lỗi-no-module-named-torch>Lỗi: &ldquo;No module named &rsquo;torch'&rdquo;</h3><p><strong>Giải pháp</strong>: Kiểm tra requirements.txt và rebuild image</p><h3 id=lỗi-model-không-load-được>Lỗi: Model không load được</h3><p><strong>Giải pháp</strong>: Kiểm tra tên file model trong Dockerfile và app.py</p><h2 id=chi-phí-ước-tính>Chi phí ước tính</h2><p><strong>Lambda</strong>:</p><ul><li>Free tier: 1M requests/month, 400,000 GB-seconds</li><li>Sau đó: $0.20 per 1M requests + $0.0000166667 per GB-second</li></ul><p><strong>Ví dụ</strong>: 10,000 requests/month, mỗi request 10s, 3GB RAM</p><ul><li>Compute: 10,000 × 10s × 3GB × $0.0000166667 = $5/month</li><li>Requests: 10,000 × $0.20/1M = $0.002/month</li><li><strong>Total</strong>: ~$5/month</li></ul><p><strong>API Gateway</strong>:</p><ul><li>$3.50 per million requests</li><li>10,000 requests = $0.035/month</li></ul><p><strong>ECR</strong>:</p><ul><li>$0.10 per GB/month storage</li><li>Image ~2GB = $0.20/month</li></ul><p><strong>Total ước tính</strong>: ~$5.25/month cho 10,000 predictions</p><h2 id=checklist-cuối-cùng>Checklist cuối cùng</h2><ul><li><input disabled type=checkbox> Sửa tên file model trong app.py hoặc Dockerfile</li><li><input disabled type=checkbox> Test Docker image locally</li><li><input disabled type=checkbox> Push image lên ECR</li><li><input disabled type=checkbox> Tạo Lambda function với memory 3008MB, timeout 60s</li><li><input disabled type=checkbox> Tạo API Gateway và integrate với Lambda</li><li><input disabled type=checkbox> Test API với Postman/curl</li><li><input disabled type=checkbox> Cập nhật VITE_PREDICTION_API_URL trong frontend</li><li><input disabled type=checkbox> Build và deploy frontend</li><li><input disabled type=checkbox> Test form prediction trên web</li><li><input disabled type=checkbox> Setup CloudWatch alerts</li><li><input disabled type=checkbox> Monitor logs và performance</li></ul><footer class=footline></footer></div></div><div id=navigation><a class="nav nav-prev" href=../../../../../vi/5-workshop/5.4-frontback-end/5.4.2-lambda-architecture/5.4.2.1-ai-model-integration/ title="Tích Hợp AI"><i class="fa fa-chevron-left"></i></a>
+<a class="nav nav-next" href=../../../../../vi/5-workshop/5.5-platform-api/ title="Nền tảng API" style=margin-right:0><i class="fa fa-chevron-right"></i></a></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=../../../../../js/clipboard.min.js?1765248292></script><script src=../../../../../js/perfect-scrollbar.min.js?1765248292></script><script src=../../../../../js/perfect-scrollbar.jquery.min.js?1765248292></script><script src=../../../../../js/jquery.sticky.js?1765248292></script><script src=../../../../../js/featherlight.min.js?1765248292></script><script src=../../../../../js/highlight.pack.js?1765248292></script><script>hljs.initHighlightingOnLoad()</script><script src=../../../../../js/modernizr.custom-3.6.0.js?1765248292></script><script src=../../../../../js/learn.js?1765248292></script><script src=../../../../../js/hugo-learn.js?1765248292></script><link href=../../../../../mermaid/mermaid.css?1765248292 rel=stylesheet><script src=../../../../../mermaid/mermaid.js?1765248292></script><script>mermaid.initialize({startOnLoad:!0})</script><script>(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,(e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date),(i=t.createElement(n),a=t.getElementsByTagName(n)[0]),i.async=1,i.src=s,a.parentNode.insertBefore(i,a)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-158079754-2","auto"),ga("send","pageview")</script></body></html>
